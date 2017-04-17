@@ -2,11 +2,13 @@ doctype html
 html
     head
         title Sandeep Khandewale's portfolio
+        
         link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
         link(rel="stylesheet", href="css/app.css")
         
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     body
         div.container-fluid
             div.row
@@ -48,7 +50,7 @@ html
                                     img(src="//placehold.it/100")
                                     div.caption
                                         p vdstr
-                                div.row(class="text-center")
+                        div.row(class="text-center")
                             div.col-xs-4
                                 div.thumbnail
                                     img(src="//placehold.it/100")
@@ -70,11 +72,13 @@ html
                 div.col-xs-2
                     ul(class="nav nav-pills nav-stacked affix")
                         li
-                            a(href="#intro") Intro
+                            a#lnkIntro(href="#intro") Intro
                         li
-                            a(href="#showcase") Showcase
+                            a#lnkShowcase(href="#showcase") Showcase
                         li
-                            a(href="#skills") Skills
+                            a#lnkSkills(href="#skills") Skills
                         li 
-                            a(href="#contact") Contact
+                            a#lnkContact(href="#contact") Contact
+        script(type="text/javascript", src="js/index.js")
+        
         
