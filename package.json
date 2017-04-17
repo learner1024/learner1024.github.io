@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/learner1024/learner1024.github.io#readme",
   "devDependencies": {
+    "babel-preset-es2015-script": "^1.1.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-pug": "^3.3.0"
   }
 }
