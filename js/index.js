@@ -1,5 +1,8 @@
 $(document).ready(function(){
-    $("#lnkShowcase").click(function(){
-        $("#showcase").addClass("animate tada");
-    })
+    $("ul.nav-stacked a").click(function(){
+        $("div.pfsection").removeClass("animated fadeIn");
+        
+        var target = $(this).attr("href");
+        $(target).addClass("animated fadeIn");
+    });
 });
