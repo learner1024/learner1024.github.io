@@ -1,0 +1,23 @@
+{
+  "name": "learner1024.github.io",
+  "description": "Sandeep Khandewale's homepage",
+  "main": "index.js",
+  "authors": [
+    "Sandeep Khandewale"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/learner1024/learner1024.github.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "font-awesome": "fontawesome#^4.7.0",
+    "bootstrap": "3.3.7"
+  }
+}
