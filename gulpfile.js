@@ -3,7 +3,7 @@ var pug = require('gulp-pug');
 var babel = require('gulp-babel');
 
 gulp.task("watch", function(){
-  var watcher = gulp.watch('views/*.pug', ['views']);
+  var watcher = gulp.watch(['views/*.pug', 'es6/*.js'], ['dist']);
 });
 
 gulp.task('es6', function(){
