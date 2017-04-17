@@ -1,0 +1,10 @@
+#bgImage{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: aliceblue;
+}
+section{
+    height: 100vh;
+}
