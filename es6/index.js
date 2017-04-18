@@ -19,9 +19,8 @@ $(document).ready(function(){
     var addToEl = $("#showcase .showcaseItems");
     showcaseItems.forEach(function(v){
         var markup = `
-        <div class="col-xs-4">
-            <div class='thumbnail'>
-                <img src='//placehold.it/100'>
+        <div class="col-md-6">
+            <div class='thumbnail'>                
                 <div class='caption'>
                     <h3>${v}</h3>
                     <p>explanation of ${v}</p>
