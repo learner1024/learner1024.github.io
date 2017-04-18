@@ -1,4 +1,11 @@
 $(document).ready(function(){
+    $("nav ul.nav a").click(function () {
+        $("section").removeClass("animated fadeIn");
+        
+        var target = $(this).attr("href");
+        $(target).addClass("animated fadeIn");
+    });
+
     var showcaseItems = ["portfolio - sandeep khandewale", 
         "tribute - Kishori Amonkar", 
         "random quote machine",
