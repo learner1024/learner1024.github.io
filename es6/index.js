@@ -22,8 +22,7 @@ $(document).ready(function(){
         <div class="col-md-6">
             <div class='thumbnail'>                
                 <div class='caption'>
-                    <h3>${v}</h3>
-                    <p>explanation of ${v}</p>
+                    <h2>${v} <small> Lorel Ipsum... </small></h2>
                 </div>
             </div>
         </div>`;
