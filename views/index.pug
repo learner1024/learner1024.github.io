@@ -2,83 +2,61 @@ doctype html
 html
     head
         title Sandeep Khandewale's portfolio
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono")
         
         link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
-        link(rel="stylesheet", href="css/app.css")
+        link(rel="stylesheet", href="css/app2.css")
         
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
-        div.container-fluid
-            div.row
-                div.col-xs-11
-                    div#intro.pfsection.jumbotron.text-center
-                        h1 Sandeep Khandewale
-                        h3 fullstack web developer
-                    div#showcase.pfsection.jumbotron
-                        h2 showcase
-                        div.row(class="text-center")
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p two
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p cmr
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p jwe
-                        div.row(class="text-center")
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p td
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p crm
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p vdstr
-                        div.row(class="text-center")
-                            div.col-xs-4
-                                div.thumbnail
-                                    img(src="//placehold.it/100")
-                                    div.caption
-                                        p dd
-                    div#skills.pfsection.jumbotron
-                        h2 skills
-                        div HTML5, CSS, JavaScript, NodeJS, SQL, NoSQL
+        nav.navbar.navbar-fixed-top
+            .container-fluid
+                ul.nav.navbar-nav.nav-pills
+                    li
+                        a#lnkIntro(href="#intro") Intro                
+                    li
+                        a#lnkSkills(href="#skills") Skills
+                    li
+                        a#lnkShowcase(href="#showcase") Showcase
 
-                    div#contact.pfsection.jumbotron
-                        h2 contact
-                            ul
-                                li
-                                    a(target="_blank",href="https://www.linkedin.com/in/sandeepkhandewale/") 
-                                        i(class="fa fa-linkedin-square")
-                                li
-                                    a(target="_blank",href="https://www.facebook.com/skhandewale") 
-                                        i(class="fa fa-facebook-square")
-                div.col-xs-1
-                    ul(class="nav nav-pills nav-stacked affix")
-                        li
-                            a#lnkIntro(href="#intro") Intro
-                        li
-                            a#lnkShowcase(href="#showcase") Showcase
-                        li
-                            a#lnkSkills(href="#skills") Skills
-                        li 
-                            a#lnkContact(href="#contact") Contact
-        script(type="text/javascript", src="js/index.js")
+        section#intro.text-center.vertical-center
+            .container-fluid
+                .row
+                    .col-xs-12
+                        img#myPic(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/000/202/1b9/2c1dc5a.jpg")
+                .row
+                    .col-xs-12
+                        h1 Sandeep Khandewale
+                        h2.umono fullstack developer (JavaScript)
+                .row
+                    .col-xs-12.social
+                        a(target="_blank",href="https://www.linkedin.com/in/sandeepkhandewale/") 
+                            i(class="fa fa-5x fa-linkedin-square")
+                        a(target="_blank",href="https://www.facebook.com/skhandewale") 
+                            i(class="fa fa-5x fa-facebook-square")
+                        a(target="_blank",href="https://www.github.com/learner1024") 
+                            i(class="fa fa-5x fa-github-square")
+        
+        section#skills.text-center
+            .container-fluid
+                .row
+                    .col-xs-12
+                        h2 Skills
+                        h4.umono HTML5, CSS, JavaScript, NodeJS, SQL, NoSQL
+        
+        section#showcase.text-center
+            .container
+                .row
+                    .col-xs-12
+                        h2 Showcase
+                        h4.umono
+                            .row#showcaseItems
+                                
+            
+        script(type="text/javascript", src="js/index2.js")
         
         
