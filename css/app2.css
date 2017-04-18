@@ -1,9 +1,10 @@
-#bgImage{
+#bg{
     position: fixed;
     width: 100vw;
     height: 100vh;
     z-index: -1;
     background-color: aliceblue;
+    font-size: 6em;
 }
 section{
     height: 100vh;
@@ -14,4 +15,13 @@ body {
 
 .umono{
     font-family: 'Ubuntu Mono', monospace;
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;   
+}
+
+#myPic{
+    border-radius: 5% 50%;
 }
