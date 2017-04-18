@@ -11,6 +11,7 @@ section{
 }
 body {
     font-family: 'Ubuntu', sans-serif;
+    letter-spacing: 0.1vw;
 }
 
 .umono{
