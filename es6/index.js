@@ -23,7 +23,8 @@ $(document).ready(function(){
             <div class='thumbnail'>
                 <img src='//placehold.it/100'>
                 <div class='caption'>
-                    <p>${v}</p>
+                    <h3>${v}</h3>
+                    <p>explanation of ${v}</p>
                 </div>
             </div>
         </div>`;
