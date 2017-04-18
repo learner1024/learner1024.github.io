@@ -8,3 +8,10 @@
 section{
     height: 100vh;
 }
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.umono{
+    font-family: 'Ubuntu Mono', monospace;
+}
