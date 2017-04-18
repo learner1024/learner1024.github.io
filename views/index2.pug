@@ -11,10 +11,20 @@ html
         link(rel="stylesheet", href="css/app2.css")
         
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
-        section#bg.hide &lt;&gt;;&lt;/&gt;
+        nav.navbar.navbar-fixed-top
+            .container-fluid
+                ul.nav.navbar-nav.nav-pills
+                    li
+                        a#lnkIntro(href="#intro") Intro                
+                    li
+                        a#lnkSkills(href="#skills") Skills
+                    li
+                        a#lnkShowcase(href="#showcase") Showcase
+
         section#intro.text-center.vertical-center
-            .container
+            .container-fluid
                 .row
                     .col-xs-12
                         img#myPic(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/000/202/1b9/2c1dc5a.jpg")
@@ -23,16 +33,29 @@ html
                         h1 Sandeep Khandewale
                         h2.umono fullstack developer (JavaScript)
                 .row
-                    .col-xs-12
+                    .col-xs-12.social
                         a(target="_blank",href="https://www.linkedin.com/in/sandeepkhandewale/") 
                             i(class="fa fa-5x fa-linkedin-square")
                         a(target="_blank",href="https://www.facebook.com/skhandewale") 
                             i(class="fa fa-5x fa-facebook-square")
                         a(target="_blank",href="https://www.github.com/learner1024") 
                             i(class="fa fa-5x fa-github-square")
-        section#skills skills
-            
-        section#showcase showcase
+        
+        section#skills.text-center
+            .container-fluid
+                .row
+                    .col-xs-12
+                        h2 Skills
+                        h4.umono HTML5, CSS, JavaScript, NodeJS, SQL, NoSQL
+        
+        section#showcase.text-center
+            .container
+                .row
+                    .col-xs-12
+                        h2 Showcase
+                        h4.umono
+                            .row#showcaseItems
+                                
             
         script(type="text/javascript", src="js/index2.js")
         

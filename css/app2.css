@@ -25,3 +25,7 @@ body {
 #myPic{
     border-radius: 5% 50%;
 }
+
+.social a{
+    margin: 1vw;
+}
