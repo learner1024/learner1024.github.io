@@ -10,12 +10,18 @@ var renderResults = function(online, offline){
     if(filter && c.name.indexOf(filter) == -1){
       filtered = false;
     }
+
+    var markup = `
+    <li class='list-group-item'>
+      <a href='${c.url}'><img class='img-responsive' src='${c.logo}'/><span> ${c.display_name} </span></a>
+    </li>`;
+
     if(filtered && online && offline)
-      $("#results").append("<li><a target='_blank' href='" + c.url + "'>" + c.display_name + "</a><img src='"+ c.logo +"'/></li>");        
+      $("#results").append(markup);       
     else if(filtered && online && c.mature)
-      $("#results").append("<li><a target='_blank' href='" + c.url + "'>" + c.display_name + "</a><img src='"+ c.logo +"'/></li>");
+      $("#results").append(markup);
     else if(filtered && offline && !c.mature)
-      $("#results").append("<li><a target='_blank' href='" + c.url + "'>" + c.display_name + "</a><img src='"+ c.logo +"'/></li>");
+      $("#results").append(markup);
   });
 
 }
