@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title Sandeep Khandewale's portfolio
+
+        meta(charset="UTF-8") 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
+        
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
+        link(rel="stylesheet", href="dist/css/twitch-dir.css")
+        
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    body
+        div.container-fluid
+            div.jumbotron.full-page-height
+                h2 Twitch.tv JSON API demo                
+                .row
+                    .col-xs-12
+                        .input-group
+                            input#filterText.form-control(type="text")
+                            span.input-group-btn
+                                button#btnAll.btn.btn-default.active(type="button") All
+                                button#btnOnline.btn.btn-default(type="button") Online
+                                button#btnOffline.btn.btn-default(type="button") Offline
+                        div
+                            ul#results
+                            
+                                
+            
+        script(type="text/javascript", src="dist/js/twitch-dir.js")
+            

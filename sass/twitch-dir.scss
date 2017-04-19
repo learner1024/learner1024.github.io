@@ -1,0 +1,17 @@
+.full-page-{
+    height: 95vh;
+}
+
+
+
+$font-family: 'Ubuntu', sans-serif;
+
+body {
+    font-family: $font-family;
+    margin-top:15px;
+}
+
+ul#results li img {
+  width: 5vh;
+  height: 5vh;
+}
