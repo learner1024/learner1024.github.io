@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title Sandeep Khandewale's portfolio
+
+        meta(charset="UTF-8") 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
+        
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    body
+        .container-fluid.text-center
+            h2 Random Quote Machine
+            .row
+                .col-xs-12
+                    a#genQuote.btn-primary(class="btn", href="#") Generate
+                    blockquote
+                        h1#quoteText Hello World                            
+                            h2
+                                footer                                 
+                                    cite.title#quoteAuthor programmer
+                                         
+        script(type="text/javascript", src="dist/js/quote-machine.js")
