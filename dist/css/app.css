@@ -1,5 +1,17 @@
-body {
-  font-family: Ubuntu, sans-serif; }
-
 section {
-  height: 100vh; }
+  min-height: 100vh; }
+  section h2 {
+    margin-top: 7vh; }
+
+body {
+  font-family: "Ubuntu", sans-serif; }
+
+.vertical-center {
+  display: flex;
+  align-items: center; }
+
+#myPic {
+  border-radius: 5% 50%; }
+
+.social a {
+  margin: 1vw; }

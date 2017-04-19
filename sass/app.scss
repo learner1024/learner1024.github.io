@@ -1,10 +1,24 @@
-@import 'parts/nav';
+$font-family: 'Ubuntu', sans-serif;
+section{
+    h2{
+        margin-top: 7vh;
+    }
+    min-height: 100vh;
 
-$font-stack: Ubuntu, sans-serif;
-body{
-    font-family: $font-stack;
+}
+body {
+    font-family: $font-family;
 }
 
-section{
-    height: 100vh;
+.vertical-center{
+    display: flex;
+    align-items: center;   
+}
+
+#myPic{
+    border-radius: 5% 50%;
+}
+
+.social a{
+    margin: 1vw;
 }
