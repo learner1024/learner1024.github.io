@@ -3,94 +3,23 @@ html
     head
         title Sandeep Khandewale's portfolio
 
+        meta(charset="UTF-8") 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono")
         
-        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")      
         link(rel="stylesheet", href="dist/css/app.css")
         
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
-        nav.navbar.navbar-fixed-top
-            .container-fluid
-                ul.nav.navbar-nav.nav-pills
-                    li
-                        a#lnkIntro(href="#intro") Intro                
-                    li
-                        a#lnkTechs(href="#techs") Techs
-                    li
-                        a#lnkShowcase(href="#showcase") Showcase
-
-        section#intro.text-center.vertical-center
-            .container-fluid
-                .row
-                    .col-xs-12
-                        img#myPic(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/000/202/1b9/2c1dc5a.jpg")
-                .row
-                    .col-xs-12
-                        h1 Sandeep Khandewale 
-                        h2.umono fullstack developer (JavaScript)
-                .row
-                    .col-xs-12.social
-                        a(target="_blank",href="https://www.linkedin.com/in/sandeepkhandewale/") 
-                            i(class="fa fa-5x fa-linkedin-square")
-                        a(target="_blank",href="https://www.facebook.com/skhandewale") 
-                            i(class="fa fa-5x fa-facebook-square")
-                        a(target="_blank",href="https://www.github.com/learner1024") 
-                            i(class="fa fa-5x fa-github-square")
-        
-        section#techs
-            .container
-                .row
-                    .col-xs-12
-                        h1.text-center Techs
-
-                .panel.panel-default
-                    .panel-heading
-                        h2 Past 4 years
-                    .panel-body
-                        h3 I have been working as front-end developer
-                    ul.umono
-                        li
-                            h4 JavaScript / ES6
-                        li 
-                            h4 AngularJS, PolymerJS, JQuery
-                        li
-                            h4 NodeJS, ExpressJS
-                        li
-                            h4 PostGreSQL, MongoDB, CouchDB
-                        li
-                            h4 Hybrid Mobile Apps - Ionic
-                    .panel-heading
-                        h2 Few years before that
-                    .panel-body
-                        h3 I used to be Web developer on .Net stack
-                    ul.umono
-                        li
-                            h4 C#
-                        li 
-                            h4 ADO.Net, Entity Framework
-                        li 
-                            h4 ASP.Net Web Forms, ASP.Net MVC, ASP.Net Web API
-                        li
-                            h4 Umbraco
-                        li 
-                            h4 Silverlight
-                        li 
-                            h4 MSSQL server
-                                
-        
-        section#showcase
-            .container
-                .row
-                    .col-xs-12
-                        h1.text-center Showcase (WIP)
-                        #showcaseItems.row.umono
-                            
-                                
-            
+        nav
+            a(href="#intro") Intro
+            a(href="#techs") Techs
+            a(href="#showcase") Showcase
+        section#intro
+            img
+            h1 Full-stack Developer (JavaScript)
+        section#techs Techs
+        section#showcase Showcase
         script(type="text/javascript", src="dist/js/index.js")
-        
-        
