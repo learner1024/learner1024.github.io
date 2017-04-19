@@ -25,6 +25,14 @@ $(document).ready(function(){
     $("#ops").text(opsText);
     $("#display").text("0");
   }
+
+  var getDecPointBtnClickHandlerFn = function(){
+    var displayText = $("#display").text();
+    if(displayText.indexOf(".") === -1){
+      var currentStr = displayText + ".";
+      $("#display").text(currentStr);
+    }
+  };
   
   var getDigitBtnClickHandlerFn = function(d){
     return function(){
@@ -37,7 +45,7 @@ $(document).ready(function(){
       appendOperator(op);
     }
   }
-  
+  $("#btnDecPnt").click(getDecPointBtnClickHandlerFn);
   $("#btn0").click(getDigitBtnClickHandlerFn(0));
   $("#btn1").click(getDigitBtnClickHandlerFn(1));
   $("#btn2").click(getDigitBtnClickHandlerFn(2));
