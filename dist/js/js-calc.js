@@ -5,10 +5,13 @@ $(document).ready(function () {
 
   var operands = [];
   var operators = [];
+  var displayClearFlag = false;
+
   var appendDigit = function appendDigit(d) {
-    var displayText = $("#display").text();
+    var displayText = displayClearFlag ? "" : $("#display").text();
     var currentStr = displayText == "0" ? "" : displayText;
     $("#display").text(currentStr + d);
+    displayClearFlag = false;
   };
 
   var appendOperator = function appendOperator(op) {
@@ -16,7 +19,7 @@ $(document).ready(function () {
     operands.push(displayText);
     operators.push(op);
     var opsText = operands.reduce(function (acc, el, i) {
-      acc += el + operators[i];
+      acc += el + (operators[i] || "");
       return acc;
     }, "");
     $("#ops").text(opsText);
@@ -57,6 +60,7 @@ $(document).ready(function () {
   $("#btnSub").click(getOperatorBtnClickHandlerFn('-'));
   $("#btnMul").click(getOperatorBtnClickHandlerFn('*'));
   $("#btnDiv").click(getOperatorBtnClickHandlerFn('/'));
+
   $("#btnEquals").click(function () {
     var displayText = $("#display").text();
     operands.push(displayText);
@@ -65,14 +69,23 @@ $(document).ready(function () {
       acc += el + (operators[i] ? operators[i] : "");
       return acc;
     }, "");
-    $("#ops").text(opsText);
+    $("#ops").html("&nbsp;");
 
     $("#display").text(eval(opsText));
+
+    operators.length = 0;
+    operands.length = 0;
+    displayClearFlag = true;
   });
+
   $("#btnAC").click(function () {
     operators.length = 0;
     operands.length = 0;
     $("#display").text("0");
     $("#ops").html("&nbsp;");
+  });
+
+  $("#btnCE").click(function () {
+    $("#display").text("0");
   });
 });
