@@ -1,0 +1,77 @@
+doctype html
+html
+    head
+        title Sandeep Khandewale's portfolio
+
+        meta(charset="UTF-8") 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
+        
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
+        link(rel="stylesheet", href="dist/css/js-calc.css")
+        
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    body
+        div.container
+            div.jumbotron
+                h1 JS CalC
+                table#calc.text-center
+                    tr
+                        td.text-right(colspan=4)            
+                            h6#ops &nbsp;
+                            h2#display 0
+                        
+                    tr
+                        td
+                            a#btnAC AC
+                        td 
+                            a#btnCE CE
+                        td 
+                            a#btnPerc %
+                        td 
+                            a#btnDiv /
+                    tr
+                        td 
+                            a#btn7 7
+                        td 
+                            a#btn8 8
+                        td 
+                            a#btn9 9
+                        td 
+                            a#btnMul *
+                    tr
+                        td 
+                            a#btn4 4
+                        td 
+                            a#btn5 5
+                        td 
+                            a#btn6 6
+                        td 
+                            a#btnSub -
+                    tr
+                        td 
+                            a#btn1 1
+                        td 
+                            a#btn2 2
+                        td 
+                            a#btn3 3
+                        td(rowspan=2) 
+                            a#btnAdd +
+                    tr
+                        td 
+                            a#btn0 0
+                        td 
+                            a#btnDecPnt .
+                        td 
+                            a#btnEquals =
+                            
+                                
+            
+        script(type="text/javascript", src="dist/js/js-calc.js")
+        
+        
+
