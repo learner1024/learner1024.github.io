@@ -29,19 +29,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./dist/css'));
 });
 
-
-
- 
-
-
 gulp.task('dist', ['views', 'es6', 'sass']);
 
-//gulp.task("default", ['views']);
 
-'use strict';
- 
-var gulp = require('gulp');
 
- 
-
- 
