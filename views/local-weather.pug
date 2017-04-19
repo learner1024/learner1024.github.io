@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        title Local Weather App
+
+        meta(charset="UTF-8") 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
+        
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
+        link(rel="stylesheet", href="dist/css/app.css")
+        
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    body                
+        section.text-center.vertical-center.full-height
+            .container-fluid
+                .row
+                    .col-xs-12
+                        h2 Local Weather App
+                        a#getWeather.btn.btn-primary Get Weather
+                        .btn-group(role="group")
+                            button#btnC.btn.btn-default.active(type="button") C
+                            button#btnF.btn.btn-default(type="button") F
+                        #weather
+                            h2 
+                                span#locName
+                                img#weatherIcon
+                            h1#weatherDescr
+                            h1#temp            
+        script(type="text/javascript", src="dist/js/local-weather.js")
