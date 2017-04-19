@@ -11,7 +11,7 @@ var renderResults = function renderResults(online, offline) {
       filtered = false;
     }
 
-    var markup = "\n    <li class='list-group-item'>\n      <a href='" + c.url + "'><img class='img-responsive' src='" + c.logo + "'/><span> " + c.display_name + " </span></a>\n    </li>";
+    var markup = "\n    <div class='row well'>\n      <div class='col-xs-4'>\n        <img class='img-responsive' src='" + c.logo + "'/>      \n      </div>\n      <div class='col-xs-8'>\n        <a href='" + c.url + "'><h3>" + c.display_name + "</h3></a>\n      </div>\n    </div>";
 
     if (filtered && online && offline) $("#results").append(markup);else if (filtered && online && c.mature) $("#results").append(markup);else if (filtered && offline && !c.mature) $("#results").append(markup);
   });

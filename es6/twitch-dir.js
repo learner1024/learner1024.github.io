@@ -12,9 +12,14 @@ var renderResults = function(online, offline){
     }
 
     var markup = `
-    <li class='list-group-item'>
-      <a href='${c.url}'><img class='img-responsive' src='${c.logo}'/><span> ${c.display_name} </span></a>
-    </li>`;
+    <div class='row well'>
+      <div class='col-xs-4'>
+        <img class='img-responsive' src='${c.logo}'/>      
+      </div>
+      <div class='col-xs-8'>
+        <a href='${c.url}'><h3>${c.display_name}</h3></a>
+      </div>
+    </div>`;
 
     if(filtered && online && offline)
       $("#results").append(markup);       
