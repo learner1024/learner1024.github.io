@@ -16,6 +16,19 @@ html
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
         script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
+        div
+            span#pcDisplay 
+            button#start
+            button#pauseResume
+            button#term
+        div#configBreak            
+            button#minusBreakMinutes -
+            span#breakMinutes
+            button#plusBreakMinutes +
+        div#configSession            
+            button#minusSessionMinutes -
+            span#sessionMinutes
+            button#plusSessionMinutes +
         script(type="text/javascript", src="dist/js/pomodoro-clock.js")
         
         

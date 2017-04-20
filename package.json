@@ -18,6 +18,7 @@
   "homepage": "https://github.com/learner1024/learner1024.github.io#readme",
   "devDependencies": {
     "babel-preset-es2015-script": "^1.1.0",
+    "browser-sync": "^2.18.8",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-connect": "^5.0.0",
