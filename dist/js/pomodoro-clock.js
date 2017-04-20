@@ -4,18 +4,28 @@ var PCStates = {
     paused: 'p',
     terminated: 't'
 };
-var PomodoroClock = function PomodoroClock(s, b) {
-    this.sessionMinutes = s || 25;
-    this.breakMinutes = b || 5;
+var PomodoroClock = function PomodoroClock(opts) {
+
+    if (!opts.callbackFn) {
+        throw new Error("you should provide callback function for PomodoroClock");
+    }
+
+    this.callbackFn = opts.callbackFn;
+    this.sessionMinutes = opts.sessionMinutes || 25;
+    this.breakMinutes = opts.breakMinutes || 5;
+
     this.PCState = PCStates.fresh;
     this.timer = null;
     this.zero = null;
 };
 
 PomodoroClock.prototype.init = function () {
+    var that = this;
     this.zero = new Date().getTime();
     this.PCState = PCStates.inprogress;
-    this.timer = setInterval(function () {}, 1000);
+    this.timer = setInterval(function () {
+        that.callbackFn(new Date().getTime() - that.zero);
+    }, 1000);
 };
 
 PomodoroClock.prototype.resume = function () {
@@ -23,6 +33,7 @@ PomodoroClock.prototype.resume = function () {
 };
 
 PomodoroClock.prototype.term = function () {
+    clearInterval(this.timer);
     this.PCState = PCStates.terminated;
 };
 
@@ -31,7 +42,10 @@ PomodoroClock.prototype.pause = function () {
 };
 
 $(document).ready(function () {
-    var pc = new PomodoroClock();
+    var pcChangeHandler = function pcChangeHandler(changedVal) {
+        $("#pcDisplay").text(changedVal);
+    };
+    var pc = new PomodoroClock({ callbackFn: pcChangeHandler });
 
     $("#start").click(function () {
         pc.init();
@@ -47,23 +61,23 @@ $(document).ready(function () {
         pc.term();
     });
 
-    $("#breakMinutes").text(breakMinutes);
-    $("#sessionMinutes").text(sessionMinutes);
+    $("#breakMinutes").text(pc.breakMinutes);
+    $("#sessionMinutes").text(pc.sessionMinutes);
 
     $("#minusBreakMinutes").click(function () {
-        if (breakMinutes > 1) {
-            $("#breakMinutes").text(--breakMinutes);
+        if (pc.breakMinutes > 1) {
+            $("#breakMinutes").text(--pc.breakMinutes);
         }
     });
     $("#plusBreakMinutes").click(function () {
-        $("#breakMinutes").text(++breakMinutes);
+        $("#breakMinutes").text(++pc.reakMinutes);
     });
     $("#minusSessionMinutes").click(function () {
-        if (sessionMinutes > 0) {
-            $("#sessionMinutes").text(--sessionMinutes);
+        if (pc.sessionMinutes > 0) {
+            $("#sessionMinutes").text(--pc.sessionMinutes);
         }
     });
     $("#plusSessionMinutes").click(function () {
-        $("#sessionMinutes").text(++sessionMinutes);
+        $("#sessionMinutes").text(++pc.sessionMinutes);
     });
 });
