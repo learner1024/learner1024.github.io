@@ -67,17 +67,24 @@ PomodoroClock.prototype.initSession = function () {
     }, 999);
 };
 
-PomodoroClock.prototype.resume = function () {
-    this.PCState = PCStates.sessionInProgress;
-};
+// PomodoroClock.prototype.pauseResume = function(){
+//     if(pc.PCState == PCStates.paused){
+//         this.PCState = PCStates.sessionInProgress;
+//     }
+//     else if(pc.PCState == PCStates.inprogress){
+//         this.PCState = PCStates.paused;
+//     }
+
+// }
 
 PomodoroClock.prototype.term = function () {
-
+    clearInterval(this.sessionTimer);
+    clearInterval(this.breakTimer);
+    this.sessionTimer = null;
+    this.breakTimer = null;
+    this.startEpoch = undefined;
+    this.endEpoch = undefined;
     this.PCState = PCStates.terminated;
-};
-
-PomodoroClock.prototype.pause = function () {
-    this.PCState = PCStates.paused;
 };
 
 $(document).ready(function () {
@@ -93,15 +100,13 @@ $(document).ready(function () {
     $("#start").click(function () {
         pc.initSession();
     });
-    $("#pauseResume").click(function () {
-        if (pc.PCState == PCStates.paused) {
-            pc.resume();
-        } else if (pc.PCState == PCStates.inprogress) {
-            pc.pause();
-        }
-    });
+    // $("#pauseResume").click(function(){
+    //     pc.pauseResume();
+    // });
     $("#term").click(function () {
         pc.term();
+        $("#breakDisplay").text("");
+        $("#sessionDisplay").text("");
     });
 
     $("#breakMinutes").text(pc.breakMinutes);
