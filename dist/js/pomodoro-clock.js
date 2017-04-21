@@ -1,39 +1,78 @@
 var PCStates = {
     fresh: 'f',
-    inprogress: 'i',
+    sessionInProgress: 's',
+    breakInProgress: 'b',
     paused: 'p',
     terminated: 't'
 };
+var Utils = {
+    formatMicroseconds: function formatMicroseconds(sss) {
+        //sss is in ms e.g. 1494999
+        //get the seconds part
+        var s = Math.floor(sss / 1000); // 1494
+        //get the minutes and seconds part
+        var ms = s % 60; // 54
+        var mm = (s - ms) / 60; //24
+        return mm + ':' + ms;
+    }
+};
 var PomodoroClock = function PomodoroClock(opts) {
 
-    if (!opts.callbackFn) {
-        throw new Error("you should provide callback function for PomodoroClock");
+    if (!opts.callbackFnSession || !opts.callbackFnBreak) {
+        throw new Error("you should provide callback function for PomodoroClock for session break both");
     }
 
-    this.callbackFn = opts.callbackFn;
-    this.sessionMinutes = opts.sessionMinutes || 25;
-    this.breakMinutes = opts.breakMinutes || 5;
+    this.callbackFnSession = opts.callbackFnSession;
+    this.callbackFnBreak = opts.callbackFnBreak;
+
+    this.sessionMinutes = opts.sessionMinutes || 1;
+    this.breakMinutes = opts.breakMinutes || 1;
 
     this.PCState = PCStates.fresh;
-    this.timer = null;
-    this.zero = null;
+    this.sessionTimer = null;
+    this.breakTimer = null;
 };
 
-PomodoroClock.prototype.init = function () {
-    var that = this;
-    this.zero = new Date().getTime();
-    this.PCState = PCStates.inprogress;
-    this.timer = setInterval(function () {
-        that.callbackFn(new Date().getTime() - that.zero);
-    }, 1000);
+PomodoroClock.prototype.initBreak = function () {
+    var _this = this;
+
+    this.PCState = PCStates.breakInProgress;
+    this.startEpoch = new Date().getTime();
+    this.endEpoch = this.startEpoch + this.breakMinutes * 60000;
+    this.breakTimer = setInterval(function () {
+        var diff = _this.endEpoch - new Date().getTime();
+        if (diff < 0) {
+            clearInterval(_this.breakTimer);
+            _this.initSession();
+        } else {
+            _this.callbackFnBreak(diff);
+        }
+    }, 999);
+};
+
+PomodoroClock.prototype.initSession = function () {
+    var _this2 = this;
+
+    this.PCState = PCStates.sessionInProgress;
+    this.startEpoch = new Date().getTime();
+    this.endEpoch = this.startEpoch + this.sessionMinutes * 60000;
+    this.sessionTimer = setInterval(function () {
+        var diff = _this2.endEpoch - new Date().getTime();
+        if (diff < 0) {
+            clearInterval(_this2.sessionTimer);
+            _this2.initBreak();
+        } else {
+            _this2.callbackFnSession(diff);
+        }
+    }, 999);
 };
 
 PomodoroClock.prototype.resume = function () {
-    this.PCState = PCStates.inprogress;
+    this.PCState = PCStates.sessionInProgress;
 };
 
 PomodoroClock.prototype.term = function () {
-    clearInterval(this.timer);
+
     this.PCState = PCStates.terminated;
 };
 
@@ -42,13 +81,17 @@ PomodoroClock.prototype.pause = function () {
 };
 
 $(document).ready(function () {
-    var pcChangeHandler = function pcChangeHandler(changedVal) {
-        $("#pcDisplay").text(changedVal);
+    var sessionChangeHandler = function sessionChangeHandler(changedVal) {
+        $("#sessionDisplay").text(Utils.formatMicroseconds(changedVal));
     };
-    var pc = new PomodoroClock({ callbackFn: pcChangeHandler });
+    var breakChangeHandler = function breakChangeHandler(changedVal) {
+        $("#breakDisplay").text(Utils.formatMicroseconds(changedVal));
+    };
+
+    var pc = new PomodoroClock({ callbackFnSession: sessionChangeHandler, callbackFnBreak: breakChangeHandler });
 
     $("#start").click(function () {
-        pc.init();
+        pc.initSession();
     });
     $("#pauseResume").click(function () {
         if (pc.PCState == PCStates.paused) {
@@ -70,10 +113,10 @@ $(document).ready(function () {
         }
     });
     $("#plusBreakMinutes").click(function () {
-        $("#breakMinutes").text(++pc.reakMinutes);
+        $("#breakMinutes").text(++pc.breakMinutes);
     });
     $("#minusSessionMinutes").click(function () {
-        if (pc.sessionMinutes > 0) {
+        if (pc.sessionMinutes > 1) {
             $("#sessionMinutes").text(--pc.sessionMinutes);
         }
     });
