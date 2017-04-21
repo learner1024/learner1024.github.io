@@ -1,0 +1,9 @@
+section {
+  min-height: 100vh; }
+
+body {
+  font-family: "Ubuntu", sans-serif; }
+
+.vertical-center {
+  display: flex;
+  align-items: center; }

@@ -18,23 +18,29 @@ var Utils = {
 }
 var PomodoroClock = function(opts){
 
-    if(!opts.callbackFnSession || !opts.callbackFnBreak){
+    if(!opts.callbackFnSession || !opts.callbackFnBreak || !opts.callbackFnStateChanged){
         throw new Error("you should provide callback function for PomodoroClock for session break both");
     }
 
     this.callbackFnSession = opts.callbackFnSession;
     this.callbackFnBreak = opts.callbackFnBreak;
+    this.callbackFnStateChanged = opts.callbackFnStateChanged;
     
     this.sessionMinutes = opts.sessionMinutes || 1;
     this.breakMinutes = opts.breakMinutes || 1;
 
-    this.PCState = PCStates.fresh;
+    this.setState(PCStates.fresh);
     this.sessionTimer = null;
     this.breakTimer = null;
 }
 
+PomodoroClock.prototype.setState = function(s){
+    this.PCState = s;
+    this.callbackFnStateChanged(this.PCState);
+}
+
 PomodoroClock.prototype.initBreak = function(){
-    this.PCState = PCStates.breakInProgress;
+    this.setState(PCStates.breakInProgress);
     this.startEpoch = (new Date()).getTime(); 
     this.endEpoch = this.startEpoch + (this.breakMinutes * 60000);    
     this.breakTimer = setInterval(() => {
@@ -50,7 +56,7 @@ PomodoroClock.prototype.initBreak = function(){
 }
 
 PomodoroClock.prototype.initSession = function(){
-    this.PCState = PCStates.sessionInProgress;
+    this.setState(PCStates.sessionInProgress);
     this.startEpoch = (new Date()).getTime(); 
     this.endEpoch = this.startEpoch + (this.sessionMinutes * 60000);    
     this.sessionTimer = setInterval(() => {
@@ -82,12 +88,27 @@ PomodoroClock.prototype.term = function(){
     this.breakTimer = null;
     this.startEpoch = undefined;
     this.endEpoch = undefined;
-    this.PCState = PCStates.terminated;
+    this.setState(PCStates.terminated);
 }
 
 
 
 $(document).ready(function(){
+    
+    var pcStateChangedHandler = function(latestState){
+        $("#presentState").text(latestState);
+        switch(latestState){
+            case PCStates.sessionInProgress:
+                $("#breakDisplay").addClass("hide");
+                $("#sessionDisplay").removeClass("hide");
+                break;
+            case PCStates.breakInProgress:
+                $("#breakDisplay").removeClass("hide");
+                $("#sessionDisplay").addClass("hide");
+                break;
+        }
+    }
+
     var sessionChangeHandler = function(changedVal){
         $("#sessionDisplay").text(Utils.formatMicroseconds(changedVal));
     }
@@ -95,7 +116,15 @@ $(document).ready(function(){
         $("#breakDisplay").text(Utils.formatMicroseconds(changedVal));
     }
     
-    var pc = new PomodoroClock({callbackFnSession: sessionChangeHandler, callbackFnBreak: breakChangeHandler});
+    var pc = new PomodoroClock({callbackFnSession: sessionChangeHandler, callbackFnBreak: breakChangeHandler, callbackFnStateChanged: pcStateChangedHandler});
+
+    var displayDefault = function(){
+        $("#breakDisplay").text(`${pc.breakMinutes}:00`);
+        $("#sessionDisplay").text(`${pc.sessionMinutes}:00`);
+    }
+
+    displayDefault();
+
 
     $("#start").click(function(){
         pc.initSession();
@@ -105,8 +134,7 @@ $(document).ready(function(){
     // });
     $("#term").click(function(){
         pc.term();
-        $("#breakDisplay").text("");
-        $("#sessionDisplay").text("");
+        displayDefault();
     });
 
     $("#breakMinutes").text(pc.breakMinutes);

@@ -1,0 +1,12 @@
+$font-family: 'Ubuntu', sans-serif;
+section{
+    min-height: 100vh;
+}
+body {
+    font-family: $font-family;
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;   
+}

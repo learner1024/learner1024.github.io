@@ -16,20 +16,32 @@ html
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
         script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
-        div
-            span#breakDisplay 
-            span#sessionDisplay 
-            button#start start 
-            button#pauseResume pause / resume
-            button#term terminate
-        div#configBreak            
-            button#minusBreakMinutes -
-            span#breakMinutes
-            button#plusBreakMinutes +
-        div#configSession            
-            button#minusSessionMinutes -
-            span#sessionMinutes
-            button#plusSessionMinutes +
+        section.vertical-center.full-height.text-center
+            .container-fluid
+                .row
+                    .col-xs-12
+                        h1 Pomodoro Clock
+                .row
+                    .col-xs-6
+                        div#configBreak
+                            button#minusBreakMinutes -
+                            span#breakMinutes
+                            button#plusBreakMinutes +
+                    .col-xs-6
+                        div#configSession    
+                            button#minusSessionMinutes -
+                            span#sessionMinutes
+                            button#plusSessionMinutes +
+                .row
+                    .col-xs-12
+                        div#display
+                            h2#presentState
+                            span.hide#breakDisplay 
+                            span#sessionDisplay
+                        div#controls
+                            button#start start 
+                            button#pauseResume pause / resume
+                            button#term terminate
         script(type="text/javascript", src="dist/js/pomodoro-clock.js")
         
         
