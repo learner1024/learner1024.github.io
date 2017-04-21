@@ -11,9 +11,28 @@ gulp.task('connect', function() {
 });
 
 gulp.task("watch", function(){
-  gulp.watch(['./views/**/*.pug'],['views']);
-  gulp.watch(['./es6/**/*.js'],['es6']);
-  gulp.watch(['./sass/**/*.scss'],['sass']);
+
+  gulp.watch(['./views/**/*.pug', './es6/**/*.js', './sass/**/*.scss']).on('change', function(e){
+    var o = gulp.src(e.path);
+    if(e.path.endsWith(".pug")){
+      o = o
+        .pipe(pug())
+        .pipe(gulp.dest('./'));
+    }
+    else if(e.path.endsWith(".js")){
+      o = o
+        .pipe(babel())
+        .pipe(gulp.dest('./dist/js'))
+    }
+    else if(e.path.endsWith(".scss")){
+      o = o
+        .pipe(sass())
+        .pipe(gulp.dest('./dist/css'))
+    }
+
+    o = o.pipe(connect.reload());
+
+  });
 });
 
 gulp.task('views', function() {
