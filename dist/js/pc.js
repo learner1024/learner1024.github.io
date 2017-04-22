@@ -53,7 +53,7 @@ PomodoroClock.prototype.initBreak = function () {
         } else {
             _this.callbackFnBreak(diff);
         }
-    }, 999);
+    }, 1000);
 };
 
 PomodoroClock.prototype.initSession = function () {
@@ -74,7 +74,7 @@ PomodoroClock.prototype.initSession = function () {
         } else {
             _this2.endEpoch += 1000;
         }
-    }, 999);
+    }, 1000);
 };
 
 PomodoroClock.prototype.pauseResume = function () {
