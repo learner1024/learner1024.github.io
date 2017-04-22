@@ -65,13 +65,20 @@ $(document).ready(function () {
     var displayText = $("#display").text();
     operands.push(displayText);
 
-    var opsText = operands.reduce(function (acc, el, i) {
-      acc += el + (operators[i] ? operators[i] : "");
-      return acc;
-    }, "");
-    $("#ops").html("&nbsp;");
+    // var opsText = operands.reduce(function(acc, el, i){
+    //   acc += el + (operators[i] ? operators[i] : "");
+    //   return acc;
+    // }, "");
+    // $("#display").text(eval(opsText));
 
-    $("#display").text(eval(opsText));
+    var result = operators.reduce(function (acc, el, i) {
+
+      var currentResult = eval("" + acc + el + operands[i + 1]);
+      return currentResult;
+    }, operands[0]);
+    $("#display").text(result);
+
+    $("#ops").html("&nbsp;");
 
     operators.length = 0;
     operands.length = 0;
