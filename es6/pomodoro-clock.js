@@ -21,6 +21,9 @@ class Timer{
         this.paused = null;
         this.ellapsedSeconds = 0;
     }
+    isInProgress(){
+        return this.t != null;
+    }
 }
 
 class PomodoroClock{
@@ -29,7 +32,7 @@ class PomodoroClock{
         this.breakMinutes = opts.breakMinutes || 5;
 
         this.sessionTimer = new Timer((ellapsedSessionSeconds) => {
-            if(ellapsedSessionSeconds / 60 > this.sessionMinutes){
+            if(ellapsedSessionSeconds / 60 >= this.sessionMinutes){
                 this.sessionTimer.reset();
                 this.breakTimer.go();
             }
@@ -40,7 +43,7 @@ class PomodoroClock{
             }
         });
         this.breakTimer = new Timer((ellapsedBreakSeconds) => {
-            if(ellapsedBreakSeconds / 60 > this.breakMinutes){
+            if(ellapsedBreakSeconds / 60 >= this.breakMinutes){
                 this.breakTimer.reset();
                 this.sessionTimer.go();
             }
