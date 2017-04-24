@@ -23,16 +23,16 @@ html
                         h1 Pomodoro Clock
                 .row
                     .col-xs-6
-                        h2 Break
-                        h3#breakMinutes
-                        div.hide#configBreak
+                        h2 Break                        
+                        div#configBreak
                             button#minusBreakMinutes -
+                            span#breakMinutes
                             button#plusBreakMinutes +
                     .col-xs-6
-                        h2 Session
-                        h3#sessionMinutes
-                        div.hide#configSession    
+                        h2 Session                        
+                        div#configSession    
                             button#minusSessionMinutes -
+                            span#sessionMinutes
                             button#plusSessionMinutes +
                 .row
                     .col-xs-12
@@ -43,6 +43,7 @@ html
                             button#pause pause
                             button#resume resume
                             button#term terminate
+        script(type="text/javascript", src="dist/js/timer.js")
         script(type="text/javascript", src="dist/js/pomodoro-clock.js")
         script(type="text/javascript", src="dist/js/pomodoro-clock-ui.js")
         

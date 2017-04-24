@@ -28,55 +28,25 @@ var Timer = function () {
             this.paused = true;
         }
     }, {
+        key: "resume",
+        value: function resume() {
+            this.paused = false;
+        }
+    }, {
         key: "reset",
         value: function reset() {
             clearInterval(this.t);
             this.t = null;
             this.paused = null;
+
             this.ellapsedSeconds = 0;
+        }
+    }, {
+        key: "isInProgress",
+        value: function isInProgress() {
+            return this.t != null;
         }
     }]);
 
     return Timer;
-}();
-
-var PomodoroClock = function () {
-    function PomodoroClock(opts) {
-        var _this2 = this;
-
-        _classCallCheck(this, PomodoroClock);
-
-        this.sessionMinutes = opts.sessionMinutes || 25;
-        this.breakMinutes = opts.breakMinutes || 5;
-
-        this.sessionTimer = new Timer(function (ellapsedSessionSeconds) {
-            if (ellapsedSessionSeconds / 60 > _this2.sessionMinutes) {
-                _this2.sessionTimer.reset();
-                _this2.breakTimer.go();
-            } else {
-                var remainingSeconds = _this2.sessionMinutes * 60 - ellapsedSessionSeconds;
-                var remainingMinutes = remainingSeconds - remainingSeconds % 60 + ":" + remainingSeconds % 60;
-                opts.sessionMinutesChangedCallback(remainingMinutes);
-            }
-        });
-        this.breakTimer = new Timer(function (ellapsedBreakSeconds) {
-            if (ellapsedBreakSeconds / 60 > _this2.breakMinutes) {
-                _this2.breakTimer.reset();
-                _this2.sessionTimer.go();
-            } else {
-                var remainingSeconds = _this2.breakMinutes * 60 - ellapsedBreakSeconds;
-                var remainingMinutes = remainingSeconds - remainingSeconds % 60 + ":" + remainingSeconds % 60;
-                opts.breakMinutesChangedCallback(remainingMinutes);
-            }
-        });
-    }
-
-    _createClass(PomodoroClock, [{
-        key: "go",
-        value: function go() {
-            this.sessionTimer.go();
-        }
-    }]);
-
-    return PomodoroClock;
 }();
