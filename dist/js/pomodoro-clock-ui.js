@@ -1,34 +1,37 @@
 $(document).ready(function () {
+    var onTimerChanged = function onTimerChanged(remainingMinutes) {
+        $("#timerDisplay").text(remainingMinutes);
+    };
     var onPCStateChanged = function onPCStateChanged(changedState) {
         switch (changedState) {
             case PCStates.ready:
+                //$("#breakDisplay").text(`${pcOpts.breakMinutes}:00`);
+                $("#timerDisplay").text(pcOpts.sessionMinutes + ":00");
+                $("#breakMinutes").text(pcOpts.breakMinutes);
+                $("#sessionMinutes").text(pcOpts.sessionMinutes);
                 break;
             case PCStates.sip:
+                $("#presentState").text("Session");
                 break;
             case PCStates.bip:
+                $("#presentState").text("Break");
                 break;
             case PCStates.sp:
+                $("#presentState").text("Paused");
                 break;
             case PCStates.bp:
+                $("#presentState").text("Paused");
                 break;
 
         }
     };
     var pcOpts = {
-        sessionMinutes: 2,
-        breakMinutes: 1,
-        sessionMinutesChangedCallback: function sessionMinutesChangedCallback(ellapsedMinutes) {
-            $("#sessionDisplay").text(ellapsedMinutes);
-        },
-        breakMinutesChangedCallback: function breakMinutesChangedCallback(ellapsedMinutes) {
-            $("#breakDisplay").text(ellapsedMinutes);
-        }
+        sessionMinutes: 0.2,
+        breakMinutes: 0.2,
+        sessionMinutesChangedCallback: onTimerChanged,
+        breakMinutesChangedCallback: onTimerChanged,
+        statechangedCallback: onPCStateChanged
     };
-
-    $("#breakDisplay").text(pcOpts.breakMinutes + ":00");
-    $("#sessionDisplay").text(pcOpts.sessionMinutes + ":00");
-    $("#breakMinutes").text(pcOpts.breakMinutes);
-    $("#sessionMinutes").text(pcOpts.sessionMinutes);
 
     var pc = new PomodoroClock(pcOpts);
 
@@ -43,7 +46,5 @@ $(document).ready(function () {
     });
     $("#term").click(function () {
         pc.reset();
-        $("#breakDisplay").text(pcOpts.breakMinutes + ":00");
-        $("#sessionDisplay").text(pcOpts.sessionMinutes + ":00");
     });
 });

@@ -24,7 +24,7 @@
           <div class="col-xs-6">
             <h2>Break</h2>
             <h3 id="breakMinutes"></h3>
-            <div id="configBreak">
+            <div class="hide" id="configBreak">
               <button id="minusBreakMinutes">-</button>
               <button id="plusBreakMinutes">+</button>
             </div>
@@ -32,7 +32,7 @@
           <div class="col-xs-6">
             <h2>Session</h2>
             <h3 id="sessionMinutes"></h3>
-            <div id="configSession">   
+            <div class="hide" id="configSession">   
               <button id="minusSessionMinutes">-</button>
               <button id="plusSessionMinutes">+</button>
             </div>
@@ -40,12 +40,8 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div id="display">
-              <h2 id="presentState"></h2>
-              <h1 id="timer"></h1><span>
-                <h1 id="breakDisplay"> </h1></span><span>
-                <h1 id="sessionDisplay"></h1></span>
-            </div>
+            <h2 id="presentState"></h2>
+            <h1 id="timerDisplay"></h1>
             <div id="controls">
               <button id="start">start </button>
               <button id="pause">pause</button>

@@ -71,6 +71,7 @@ var PomodoroClock = function () {
 
         _classCallCheck(this, PomodoroClock);
 
+        this.stateChangedCallback = opts.statechangedCallback;
         this.sessionMinutes = opts.sessionMinutes || 25;
         this.breakMinutes = opts.breakMinutes || 5;
 
@@ -78,6 +79,7 @@ var PomodoroClock = function () {
             if (ellapsedSessionSeconds / 60 >= _this2.sessionMinutes) {
                 _this2.sessionTimer.reset();
                 _this2.breakTimer.go();
+                _this2.setState(PCStates.bip);
             } else {
                 var remainingSeconds = _this2.sessionMinutes * 60 - ellapsedSessionSeconds;
                 var remainingMinutes = secondToMMSS(remainingSeconds);
@@ -88,6 +90,7 @@ var PomodoroClock = function () {
             if (ellapsedBreakSeconds / 60 >= _this2.breakMinutes) {
                 _this2.breakTimer.reset();
                 _this2.sessionTimer.go();
+                _this2.setState(PCStates.sip);
             } else {
                 var remainingSeconds = _this2.breakMinutes * 60 - ellapsedBreakSeconds;
                 var remainingMinutes = secondToMMSS(remainingSeconds);
@@ -101,6 +104,7 @@ var PomodoroClock = function () {
         key: 'setState',
         value: function setState(stateChar) {
             this.presentState = stateChar;
+            this.stateChangedCallback(this.presentState);
         }
     }, {
         key: 'go',

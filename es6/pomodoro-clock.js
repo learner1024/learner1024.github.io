@@ -43,6 +43,7 @@ var PCStates = {
 }
 class PomodoroClock{
     constructor(opts){
+        this.stateChangedCallback = opts.statechangedCallback;
         this.sessionMinutes = opts.sessionMinutes || 25;
         this.breakMinutes = opts.breakMinutes || 5;
 
@@ -50,6 +51,7 @@ class PomodoroClock{
             if(ellapsedSessionSeconds / 60 >= this.sessionMinutes){
                 this.sessionTimer.reset();
                 this.breakTimer.go();
+                this.setState(PCStates.bip);  
             }
             else{
                 var remainingSeconds = (this.sessionMinutes * 60) - ellapsedSessionSeconds;
@@ -61,6 +63,7 @@ class PomodoroClock{
             if(ellapsedBreakSeconds / 60 >= this.breakMinutes){
                 this.breakTimer.reset();
                 this.sessionTimer.go();
+                this.setState(PCStates.sip);
             }
             else{
                 var remainingSeconds = (this.breakMinutes * 60) - ellapsedBreakSeconds;
@@ -73,6 +76,7 @@ class PomodoroClock{
 
     setState(stateChar){
         this.presentState = stateChar;
+        this.stateChangedCallback(this.presentState);
     }
     go(){
         this.sessionTimer.go();
