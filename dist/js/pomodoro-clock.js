@@ -5,7 +5,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var secondToMMSS = function secondToMMSS(seconds) {
     var secondsPart = seconds % 60;
     var minutes = (seconds - secondsPart) / 60;
-    return minutes + ":" + secondsPart;
+    return minutes + ':' + secondsPart;
 };
 
 var Timer = function () {
@@ -19,7 +19,7 @@ var Timer = function () {
     }
 
     _createClass(Timer, [{
-        key: "go",
+        key: 'go',
         value: function go() {
             var _this = this;
 
@@ -29,25 +29,26 @@ var Timer = function () {
             }, 1000);
         }
     }, {
-        key: "pause",
+        key: 'pause',
         value: function pause() {
             this.paused = true;
         }
     }, {
-        key: "resume",
+        key: 'resume',
         value: function resume() {
             this.paused = false;
         }
     }, {
-        key: "reset",
+        key: 'reset',
         value: function reset() {
             clearInterval(this.t);
             this.t = null;
             this.paused = null;
+
             this.ellapsedSeconds = 0;
         }
     }, {
-        key: "isInProgress",
+        key: 'isInProgress',
         value: function isInProgress() {
             return this.t != null;
         }
@@ -55,6 +56,14 @@ var Timer = function () {
 
     return Timer;
 }();
+
+var PCStates = {
+    ready: 'r',
+    sip: 's',
+    bip: 'b',
+    sp: 'sp',
+    bp: 'bp'
+};
 
 var PomodoroClock = function () {
     function PomodoroClock(opts) {
@@ -85,36 +94,48 @@ var PomodoroClock = function () {
                 opts.breakMinutesChangedCallback(remainingMinutes);
             }
         });
+        this.setState(PCStates.ready);
     }
 
     _createClass(PomodoroClock, [{
-        key: "go",
-        value: function go() {
-            this.sessionTimer.go();
+        key: 'setState',
+        value: function setState(stateChar) {
+            this.presentState = stateChar;
         }
     }, {
-        key: "pause",
+        key: 'go',
+        value: function go() {
+            this.sessionTimer.go();
+            this.setState(PCStates.sip);
+        }
+    }, {
+        key: 'pause',
         value: function pause() {
             if (this.sessionTimer.isInProgress()) {
                 this.sessionTimer.pause();
+                this.setState(PCStates.sp);
             } else if (this.breakTimer.isInProgress()) {
                 this.breakTimer.pause();
+                this.setState(PCStates.bp);
             }
         }
     }, {
-        key: "resume",
+        key: 'resume',
         value: function resume() {
             if (this.sessionTimer.isInProgress()) {
                 this.sessionTimer.resume();
+                this.setState(PCStates.sip);
             } else if (this.breakTimer.isInProgress()) {
                 this.breakTimer.resume();
+                this.setState(PCStates.bip);
             }
         }
     }, {
-        key: "reset",
+        key: 'reset',
         value: function reset() {
             this.sessionTimer.reset();
             this.breakTimer.reset();
+            this.setState(PCStates.ready);
         }
     }]);
 

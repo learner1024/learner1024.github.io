@@ -16,7 +16,7 @@ gulp.task("watch", function(){
     var o = gulp.src(e.path);
     if(e.path.endsWith(".pug")){
       o = o
-        .pipe(pug())
+        .pipe(pug({pretty: true}))
         .pipe(gulp.dest('./'));
     }
     else if(e.path.endsWith(".js")){
@@ -37,7 +37,7 @@ gulp.task("watch", function(){
 
 gulp.task('views', function() {
   return gulp.src('views/**/*.pug')
-  .pipe(pug())
+  .pipe(pug({pretty: true}))
   .pipe(gulp.dest('./'))
   .pipe(connect.reload());
 });

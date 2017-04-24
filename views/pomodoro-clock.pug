@@ -24,20 +24,21 @@ html
                 .row
                     .col-xs-6
                         h2 Break
+                        h3#breakMinutes
                         div#configBreak
-                            button.hide#minusBreakMinutes -
-                            span#breakMinutes
-                            button.hide#plusBreakMinutes +
+                            button#minusBreakMinutes -
+                            button#plusBreakMinutes +
                     .col-xs-6
                         h2 Session
+                        h3#sessionMinutes
                         div#configSession    
-                            button.hide#minusSessionMinutes -
-                            span#sessionMinutes
-                            button.hide#plusSessionMinutes +
+                            button#minusSessionMinutes -
+                            button#plusSessionMinutes +
                 .row
                     .col-xs-12
                         div#display
                             h2#presentState
+                            h1#timer
                             span
                                 h1#breakDisplay 
                             span

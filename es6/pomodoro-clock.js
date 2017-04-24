@@ -27,13 +27,20 @@ class Timer{
         clearInterval(this.t);
         this.t = null;
         this.paused = null;
+      
         this.ellapsedSeconds = 0;
     }
     isInProgress(){
         return this.t != null;
     }
 }
-
+var PCStates = {
+    ready: 'r',
+    sip: 's',
+    bip: 'b',
+    sp: 'sp',
+    bp: 'bp'
+}
 class PomodoroClock{
     constructor(opts){
         this.sessionMinutes = opts.sessionMinutes || 25;
@@ -61,29 +68,39 @@ class PomodoroClock{
                 opts.breakMinutesChangedCallback(remainingMinutes);
             }
         });
+        this.setState(PCStates.ready);
     }
 
+    setState(stateChar){
+        this.presentState = stateChar;
+    }
     go(){
         this.sessionTimer.go();
+        this.setState(PCStates.sip);        
     }
     pause(){
           if(this.sessionTimer.isInProgress()){
               this.sessionTimer.pause();
+              this.setState(PCStates.sp);
           }
           else if(this.breakTimer.isInProgress()){
               this.breakTimer.pause();
+              this.setState(PCStates.bp);
           }
     }
     resume(){
           if(this.sessionTimer.isInProgress()){
               this.sessionTimer.resume();
+              this.setState(PCStates.sip);
           }
           else if(this.breakTimer.isInProgress()){
               this.breakTimer.resume();
+              this.setState(PCStates.bip);
           }
     }
     reset(){
         this.sessionTimer.reset();
         this.breakTimer.reset();
+        this.setState(PCStates.ready);
     }
 }

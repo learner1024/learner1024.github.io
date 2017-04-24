@@ -1,5 +1,19 @@
 $(document).ready(function () {
+    var onPCStateChanged = function onPCStateChanged(changedState) {
+        switch (changedState) {
+            case PCStates.ready:
+                break;
+            case PCStates.sip:
+                break;
+            case PCStates.bip:
+                break;
+            case PCStates.sp:
+                break;
+            case PCStates.bp:
+                break;
 
+        }
+    };
     var pcOpts = {
         sessionMinutes: 2,
         breakMinutes: 1,
