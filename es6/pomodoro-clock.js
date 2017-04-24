@@ -1,3 +1,8 @@
+var secondToMMSS = function(seconds){
+    var secondsPart = seconds % 60;
+    var minutes = (seconds - secondsPart) / 60;
+    return `${minutes}:${secondsPart}`;
+}
 class Timer{
     constructor(cb){
         this.ellapsedSeconds = 0;
@@ -9,11 +14,14 @@ class Timer{
     go(){
         this.paused = false;
         this.t = setInterval(() => {
-            !this.paused && this.cb(++(this.ellapsedSeconds));
+            !this.paused && this.cb(++this.ellapsedSeconds);
         }, 1000);
     }
     pause(){
         this.paused = true;
+    }
+    resume(){
+        this.paused = false;
     }
     reset(){
         clearInterval(this.t);
@@ -38,7 +46,7 @@ class PomodoroClock{
             }
             else{
                 var remainingSeconds = (this.sessionMinutes * 60) - ellapsedSessionSeconds;
-                var remainingMinutes = `${remainingSeconds - (remainingSeconds % 60)}:${remainingSeconds % 60}`;
+                var remainingMinutes = secondToMMSS(remainingSeconds);
                 opts.sessionMinutesChangedCallback(remainingMinutes);
             }
         });
@@ -49,7 +57,7 @@ class PomodoroClock{
             }
             else{
                 var remainingSeconds = (this.breakMinutes * 60) - ellapsedBreakSeconds;
-                var remainingMinutes = `${remainingSeconds - (remainingSeconds % 60)}:${remainingSeconds % 60}`;
+                var remainingMinutes = secondToMMSS(remainingSeconds);
                 opts.breakMinutesChangedCallback(remainingMinutes);
             }
         });
@@ -57,5 +65,25 @@ class PomodoroClock{
 
     go(){
         this.sessionTimer.go();
+    }
+    pause(){
+          if(this.sessionTimer.isInProgress()){
+              this.sessionTimer.pause();
+          }
+          else if(this.breakTimer.isInProgress()){
+              this.breakTimer.pause();
+          }
+    }
+    resume(){
+          if(this.sessionTimer.isInProgress()){
+              this.sessionTimer.resume();
+          }
+          else if(this.breakTimer.isInProgress()){
+              this.breakTimer.resume();
+          }
+    }
+    reset(){
+        this.sessionTimer.reset();
+        this.breakTimer.reset();
     }
 }

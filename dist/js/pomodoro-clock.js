@@ -2,6 +2,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var secondToMMSS = function secondToMMSS(seconds) {
+    var secondsPart = seconds % 60;
+    var minutes = (seconds - secondsPart) / 60;
+    return minutes + ":" + secondsPart;
+};
+
 var Timer = function () {
     function Timer(cb) {
         _classCallCheck(this, Timer);
@@ -26,6 +32,11 @@ var Timer = function () {
         key: "pause",
         value: function pause() {
             this.paused = true;
+        }
+    }, {
+        key: "resume",
+        value: function resume() {
+            this.paused = false;
         }
     }, {
         key: "reset",
@@ -60,7 +71,7 @@ var PomodoroClock = function () {
                 _this2.breakTimer.go();
             } else {
                 var remainingSeconds = _this2.sessionMinutes * 60 - ellapsedSessionSeconds;
-                var remainingMinutes = remainingSeconds - remainingSeconds % 60 + ":" + remainingSeconds % 60;
+                var remainingMinutes = secondToMMSS(remainingSeconds);
                 opts.sessionMinutesChangedCallback(remainingMinutes);
             }
         });
@@ -70,7 +81,7 @@ var PomodoroClock = function () {
                 _this2.sessionTimer.go();
             } else {
                 var remainingSeconds = _this2.breakMinutes * 60 - ellapsedBreakSeconds;
-                var remainingMinutes = remainingSeconds - remainingSeconds % 60 + ":" + remainingSeconds % 60;
+                var remainingMinutes = secondToMMSS(remainingSeconds);
                 opts.breakMinutesChangedCallback(remainingMinutes);
             }
         });
@@ -80,6 +91,30 @@ var PomodoroClock = function () {
         key: "go",
         value: function go() {
             this.sessionTimer.go();
+        }
+    }, {
+        key: "pause",
+        value: function pause() {
+            if (this.sessionTimer.isInProgress()) {
+                this.sessionTimer.pause();
+            } else if (this.breakTimer.isInProgress()) {
+                this.breakTimer.pause();
+            }
+        }
+    }, {
+        key: "resume",
+        value: function resume() {
+            if (this.sessionTimer.isInProgress()) {
+                this.sessionTimer.resume();
+            } else if (this.breakTimer.isInProgress()) {
+                this.breakTimer.resume();
+            }
+        }
+    }, {
+        key: "reset",
+        value: function reset() {
+            this.sessionTimer.reset();
+            this.breakTimer.reset();
         }
     }]);
 
