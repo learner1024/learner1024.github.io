@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        title TicTacToe
+
+        meta(charset="UTF-8") 
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
+        
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
+        link(rel="stylesheet", href="dist/css/ttt.css")
+        
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    body
+
+        section.vertical-center.full-height.text-center
+            .container-fluid
+                .row
+                    .col-xs-12
+                        h1 Tic Tac Toe!
+                .row
+                    .col-xs-12
+                        .row
+                            .col-xs-4 1
+                            .col-xs-4 1
+                            .col-xs-4 1
+                        .row
+                            .col-xs-4 2
+                            .col-xs-4 2
+                            .col-xs-4 2                   
+                        .row
+                            .col-xs-4 3
+                            .col-xs-4 3
+                            .col-xs-4 3                           
+        script(type="text/javascript", src="dist/js/ttt.js")
+        script(type="text/javascript", src="dist/js/ttt-ui.js")

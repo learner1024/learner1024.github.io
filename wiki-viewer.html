@@ -1,1 +1,41 @@
-<!DOCTYPE html><html><head><title>Wiki Viewer</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"><link rel="stylesheet" href="dist/css/app.css"><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script></head><body><section><div class="container-fluid"><div class="row"><div class="col-xs-12"><h2>Wiki Viewer</h2></div></div><div class="panel panel-default fullpageheight"><div class="panel-heading"><form class="form-inline"><div class="form-group"><input class="form-control" id="searchText" type="search"><input id="btnSearchWiki" type="button" value="Search Wiki"><span> </span><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">(or go to random wiki article)</a></div><div></div></form></div><div class="panel-body"><ul id="searchResults">                        </ul></div></div></div></section><script type="text/javascript" src="dist/js/wiki-viewer.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wiki Viewer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="dist/css/app.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>Wiki Viewer</h2>
+          </div>
+        </div>
+        <div class="panel panel-default fullpageheight">
+          <div class="panel-heading">
+            <form class="form-inline">
+              <div class="form-group">
+                <input class="form-control" id="searchText" type="search">
+                <input id="btnSearchWiki" type="button" value="Search Wiki"><span> </span><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">(or go to random wiki article)</a>
+              </div>
+              <div></div>
+            </form>
+          </div>
+          <div class="panel-body">
+            <ul id="searchResults">                        </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="dist/js/wiki-viewer.js"></script>
+  </body>
+</html>
