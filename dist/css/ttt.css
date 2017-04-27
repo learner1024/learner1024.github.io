@@ -7,3 +7,9 @@ body {
 .vertical-center {
   display: flex;
   align-items: center; }
+
+#blocks .col-xs-4 {
+  background-color: yellow;
+  min-width: 2vw;
+  min-height: 2vw;
+  border: 1px solid red; }

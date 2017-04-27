@@ -27,6 +27,8 @@ class TicTacToe{
             isComputer: opts.userChar && opts.userChar == 'X'
         }
 
+        this.stateChangedCallback = opts.stateChangedCallback;
+
         this.setState(TicTacToeStates.fresh);
     }
     toggleTurns(){
@@ -120,8 +122,9 @@ class TicTacToe{
         var prevState = this.state;
         this.state = newState;
         switch(newState){
-            case TicTacToeStates.fresh:
+            case TicTacToeStates.fresh:                
                 this.arr = ['', '', '', '', '', '', '', '', ''];
+                this.stateChangedCallback(TicTacToeStates.fresh);
                 //its a fresh game, randomly decide who should start this game
                 if(Math.random() > 0.5){
                     this.setState(TicTacToeStates.inprogress1);
@@ -131,12 +134,18 @@ class TicTacToe{
                 }
                 break;
             case TicTacToeStates.won1:
+                this.stateChangedCallback(TicTacToeStates.won1);
+                this.setState(TicTacToeStates.fresh);
                 //notify player1 won and start fresh game
                 break;
-            case TicTacToeStates.won2:  
+            case TicTacToeStates.won2:
+                this.stateChangedCallback(TicTacToeStates.won2);
+                this.setState(TicTacToeStates.fresh);
                 //notify player1 won and start fresh game
                 break;
             case TicTacToeStates.draw:
+                this.stateChangedCallback(TicTacToeStates.draw);
+                this.setState(TicTacToeStates.fresh);
                 //notify user draw and start fresh game
                 break;
             case TicTacToeStates.inprogress1:
@@ -144,7 +153,7 @@ class TicTacToe{
                     this.makeNextMove();
                 }
                 else{
-                    //notify user and wait for input
+                    this.stateChangedCallback(TicTacToeStates.inprogress1);
                 }
 
                 break;
@@ -153,7 +162,7 @@ class TicTacToe{
                     this.makeNextMove();
                 }
                 else{
-                    //notify user and wait for input
+                    this.stateChangedCallback(TicTacToeStates.inprogress2);
                 }
                 break;
             default:
