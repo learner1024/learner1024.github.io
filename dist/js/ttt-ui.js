@@ -1,12 +1,14 @@
 $(document).ready(function () {
     var game;
     var gameOpts = {
+        userChar: 'X',
         stateChangedCallback: function stateChangedCallback(state, arr) {
             arr.forEach(function (e, i) {
                 $('#i' + i).text(e);
             });
             switch (state) {
                 case TicTacToeStates.fresh:
+                    console.log('fresh game started');
                     break;
                 case TicTacToeStates.won1:
                     console.log('player1 - won');

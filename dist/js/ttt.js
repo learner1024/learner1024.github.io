@@ -39,6 +39,8 @@ var TicTacToe = function () {
     }, {
         key: 'makeNextMove',
         value: function makeNextMove() {
+            var _this = this;
+
             var myChar, oppChar;
             if (this.state == TicTacToeStates.inprogress1) {
                 myChar = this.player1.char;
@@ -46,6 +48,8 @@ var TicTacToe = function () {
             } else if (this.state == TicTacToeStates.inprogress2) {
                 myChar = this.player2.char;
                 oppChar = this.player1.char;
+            } else {
+                throw new Error('makeNextMove was called when state was neither inprogress1 nor inprogress2');
             }
 
             //prevent opponent winning
@@ -58,15 +62,15 @@ var TicTacToe = function () {
                 var emptyCharCount = 0,
                     emptyCharIndices = [];
                 m.forEach(function (ci) {
-                    if (this.arr[ci] == '') {
+                    if (_this.arr[ci] == '') {
                         ++emptyCharCount;
                         emptyCharIndices.push(ci);
                     }
-                    if (this.arr[ci] == oppChar) {
+                    if (_this.arr[ci] == oppChar) {
                         ++oppCharCount;
                         oppCharIndices.push(ci);
                     };
-                    if (this.arr[ci] == myChar) {
+                    if (_this.arr[ci] == myChar) {
                         ++myCharCount;
                         myCharIndices.push(ci);
                     };
@@ -75,11 +79,11 @@ var TicTacToe = function () {
                 return {
                     m: m,
                     myCharCount: myCharCount,
-                    myCharIndices: [],
+                    myCharIndices: myCharIndices,
                     oppCharCount: oppCharCount,
-                    oppCharIndices: [],
+                    oppCharIndices: oppCharIndices,
                     emptyCharCount: emptyCharCount,
-                    emptyCharIndices: []
+                    emptyCharIndices: emptyCharIndices
                 };
             });
 
@@ -171,7 +175,7 @@ var TicTacToe = function () {
     }, {
         key: 'update',
         value: function update(location) {
-            var _this = this;
+            var _this2 = this;
 
             var char, wonState;
             if (this.state == TicTacToeStates.inprogress1) {
@@ -192,9 +196,9 @@ var TicTacToe = function () {
                     return m.indexOf(location) != -1;
                 });
                 var matchNotFound = allMatches.every(function (am) {
-                    if (_this.arr[am[0]] == _this.arr[am[1]] && _this.arr[am[1]] == _this.arr[am[2]]) {
+                    if (_this2.arr[am[0]] == _this2.arr[am[1]] && _this2.arr[am[1]] == _this2.arr[am[2]]) {
                         //match found, current player wins the game
-                        _this.setState(wonState);
+                        _this2.setState(wonState);
                         return false;
                     } else {
                         return true;

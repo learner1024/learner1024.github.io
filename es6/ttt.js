@@ -45,6 +45,9 @@ class TicTacToe{
             myChar = this.player2.char;
             oppChar = this.player1.char;
         }
+        else{
+            throw new Error('makeNextMove was called when state was neither inprogress1 nor inprogress2');
+        }
 
         //prevent opponent winning
         //if there is a row in match that has opponentchar count 2
@@ -52,7 +55,7 @@ class TicTacToe{
             var myCharCount = 0, myCharIndices = [];
             var oppCharCount = 0, oppCharIndices = [];
             var emptyCharCount = 0, emptyCharIndices = [];
-            m.forEach(function(ci){
+            m.forEach((ci) => {
                 if(this.arr[ci] == '') {
                     ++emptyCharCount;
                     emptyCharIndices.push(ci);
@@ -70,11 +73,11 @@ class TicTacToe{
             return {
                 m: m,
                 myCharCount: myCharCount,
-                myCharIndices: [],
+                myCharIndices: myCharIndices,
                 oppCharCount: oppCharCount,
-                oppCharIndices: [],
+                oppCharIndices: oppCharIndices,
                 emptyCharCount: emptyCharCount,
-                emptyCharIndices: []
+                emptyCharIndices: emptyCharIndices
             };
         });
 
