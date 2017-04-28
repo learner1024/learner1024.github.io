@@ -21,11 +21,19 @@
               <h1>Tic Tac Toe!</h1>
             </div>
             <div class="row">
-              <div class="col-xs-6 text-left h4" id="you">you (X)</div>
-              <div class="col-xs-6 text-right h4" id="pc">pc (O)</div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 text-center"><a class="btn" id="btnNewGame" href="#" title="start"><i class="fa fa-play"></i></a><a class="btn" id="btnSwitch" href="#" title="switch"><i class="fa fa-exchange"></i></a></div>
+              <div class="col-xs-5 text-left">
+                <h3>
+                   X<small id="xPlayer"> (you)</small></h3>
+                <h3 id="pointToXplayer"><small class="fa fa-arrow-up"></small></h3>
+              </div>
+              <div class="col-xs-2">
+                <h3><small class="fa fa-play" id="btnNewGame">                                   </small></h3>
+                <h3><small class="fa fa-exchange" id="btnSwitch"></small></h3>
+              </div>
+              <div class="col-xs-5 text-right">
+                <h3>O<small id="oPlayer"> (pc)</small></h3>
+                <h3 id="pointToOplayer"><small class="fa fa-arrow-up"></small></h3>
+              </div>
             </div>
           </div>
           <div class="panel-body" id="blocks">

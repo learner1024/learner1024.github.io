@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var switched = false;
     var game;
     var gameOpts = {
         userChar: 'X',
@@ -20,9 +21,13 @@ $(document).ready(function(){
                     console.log('there was draw');
                     break;
                 case TicTacToeStates.inprogress1:
+                    $("#pointToXplayer").removeClass("hide");
+                    $("#pointToOplayer").addClass("hide");
                     console.log('player 1\'s turn ');
                     break;
-                case TicTacToeStates.inprogress2:                
+                case TicTacToeStates.inprogress2:
+                    $("#pointToXplayer").addClass("hide");
+                    $("#pointToOplayer").removeClass("hide");
                     console.log('player 2\'s turn ');
                     break;
             }            
@@ -31,11 +36,15 @@ $(document).ready(function(){
     }
 
     $("#btnSwitch").click(function(){
+        switched = !switched;
+        $("#xPlayer").text(`${switched ? ' (pc)' : ' (you)'}`);
+        $("#oPlayer").text(`${switched ? ' (you)' : ' (pc)'}`);
+
         var currentChar = gameOpts.userChar;
         gameOpts.userChar = currentChar == 'X' ? 'O' : 'X';
-        $("#you").text(`you (${gameOpts.userChar})`);
-        $("#pc").text(`pc (${currentChar})`);
         game = new TicTacToe(gameOpts);
+        
+        
         
     })
     
