@@ -8,10 +8,10 @@ $(document).ready(function(){
             });
             switch(state){
                 case TicTacToeStates.fresh: 
-                    console.log('fresh game started')                   
+                    console.log('fresh game started');
                     break;
                 case TicTacToeStates.won1:
-                    console.log('player1 - won')
+                    console.log('player1 - won');
                     break;
                 case TicTacToeStates.won2:
                     console.log('player2 - won');
@@ -28,7 +28,16 @@ $(document).ready(function(){
             }            
         }
         
-    }    
+    }
+
+    $("#btnSwitch").click(function(){
+        var currentChar = gameOpts.userChar;
+        gameOpts.userChar = currentChar == 'X' ? 'O' : 'X';
+        $("#you").text(`you (${gameOpts.userChar})`);
+        $("#pc").text(`pc (${currentChar})`);
+        game = new TicTacToe(gameOpts);
+        
+    })
     
     $("#btnNewGame").click(function(){
         game = new TicTacToe(gameOpts);

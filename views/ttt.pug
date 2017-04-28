@@ -24,9 +24,16 @@ html
                     .panel-heading.text-left
                         .panel-title
                             h1 Tic Tac Toe!
-                        h3 Player 1 (X)
-                        h3 Player 2 (O)
-                        button#btnNewGame.btn.btn-primary new game
+                        .row
+                            .col-xs-6.text-left.h4#you you (X)
+                            .col-xs-6.text-right.h4#pc pc (O)
+                        .row
+                            .col-xs-12.text-center
+                                a#btnNewGame.btn(href="#", title="start")
+                                    i.fa.fa-play
+                                a#btnSwitch.btn(href="#", title="switch")
+                                    i.fa.fa-exchange
+                        
                     .panel-body#blocks
                         .row
                             .col-xs-4#i0

@@ -1,10 +1,10 @@
 TicTacToeStates = {
     fresh: 'f',
-    won1: 'w1',
-    won2: 'w2',
+    won1: 'wX',
+    won2: 'wO',
     draw: 'd',
-    inprogress1: 'p1',
-    inprogress2: 'p2'
+    inprogress1: 'pX',
+    inprogress2: 'pO'
 }
 TicTacToeMatches = [
             [0,1,2],
@@ -118,7 +118,7 @@ class TicTacToe{
                     }
                     else{
                         //this is first turn, all empty, do it anywhere
-                        loc = 0;
+                        loc = 4;
                     }
                 }
             }
@@ -142,18 +142,15 @@ class TicTacToe{
                 break;
             case TicTacToeStates.won1:
                 this.stateChangedCallback(TicTacToeStates.won1, this.arr);
-                this.setState(TicTacToeStates.fresh);
-                //notify player1 won and start fresh game
+                //notify player1 won
                 break;
             case TicTacToeStates.won2:
                 this.stateChangedCallback(TicTacToeStates.won2, this.arr);
-                this.setState(TicTacToeStates.fresh);
-                //notify player1 won and start fresh game
+                //notify player1 won
                 break;
             case TicTacToeStates.draw:
                 this.stateChangedCallback(TicTacToeStates.draw, this.arr);
-                this.setState(TicTacToeStates.fresh);
-                //notify user draw and start fresh game
+                //notify draw
                 break;
             case TicTacToeStates.inprogress1:
                 if(this.player1.isComputer){

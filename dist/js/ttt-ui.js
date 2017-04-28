@@ -30,6 +30,14 @@ $(document).ready(function () {
 
     };
 
+    $("#btnSwitch").click(function () {
+        var currentChar = gameOpts.userChar;
+        gameOpts.userChar = currentChar == 'X' ? 'O' : 'X';
+        $("#you").text('you (' + gameOpts.userChar + ')');
+        $("#pc").text('pc (' + currentChar + ')');
+        game = new TicTacToe(gameOpts);
+    });
+
     $("#btnNewGame").click(function () {
         game = new TicTacToe(gameOpts);
     });
