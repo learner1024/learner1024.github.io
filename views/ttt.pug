@@ -18,12 +18,16 @@ html
     body
 
         section.vertical-center.full-height.text-center
+
             .container-fluid
-                .row
-                    .col-xs-12
-                        h1 Tic Tac Toe!
-                .row
-                    .col-xs-12#blocks
+                .panel.panel-default
+                    .panel-heading
+                        .panel-title
+                            h1 Tic Tac Toe!
+                        h3.text-left Player 1 (X)
+                        h3.text-left Player 2 (O)
+                        button#btnNewGame.btn.btn-primary new game
+                    .panel-body#blocks
                         .row
                             .col-xs-4#i0
                             .col-xs-4#i1
@@ -35,6 +39,7 @@ html
                         .row
                             .col-xs-4#i6
                             .col-xs-4#i7
-                            .col-xs-4#i8                        
+                            .col-xs-4#i8   
+                                                     
         script(type="text/javascript", src="dist/js/ttt.js")
         script(type="text/javascript", src="dist/js/ttt-ui.js")

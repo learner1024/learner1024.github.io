@@ -126,7 +126,7 @@ var TicTacToe = function () {
             switch (newState) {
                 case TicTacToeStates.fresh:
                     this.arr = ['', '', '', '', '', '', '', '', ''];
-                    this.stateChangedCallback(TicTacToeStates.fresh);
+                    this.stateChangedCallback(TicTacToeStates.fresh, this.arr);
                     //its a fresh game, randomly decide who should start this game
                     if (Math.random() > 0.5) {
                         this.setState(TicTacToeStates.inprogress1);
@@ -135,17 +135,17 @@ var TicTacToe = function () {
                     }
                     break;
                 case TicTacToeStates.won1:
-                    this.stateChangedCallback(TicTacToeStates.won1);
+                    this.stateChangedCallback(TicTacToeStates.won1, this.arr);
                     this.setState(TicTacToeStates.fresh);
                     //notify player1 won and start fresh game
                     break;
                 case TicTacToeStates.won2:
-                    this.stateChangedCallback(TicTacToeStates.won2);
+                    this.stateChangedCallback(TicTacToeStates.won2, this.arr);
                     this.setState(TicTacToeStates.fresh);
                     //notify player1 won and start fresh game
                     break;
                 case TicTacToeStates.draw:
-                    this.stateChangedCallback(TicTacToeStates.draw);
+                    this.stateChangedCallback(TicTacToeStates.draw, this.arr);
                     this.setState(TicTacToeStates.fresh);
                     //notify user draw and start fresh game
                     break;
@@ -153,7 +153,7 @@ var TicTacToe = function () {
                     if (this.player1.isComputer) {
                         this.makeNextMove();
                     } else {
-                        this.stateChangedCallback(TicTacToeStates.inprogress1);
+                        this.stateChangedCallback(TicTacToeStates.inprogress1, this.arr);
                     }
 
                     break;
@@ -161,7 +161,7 @@ var TicTacToe = function () {
                     if (this.player2.isComputer) {
                         this.makeNextMove();
                     } else {
-                        this.stateChangedCallback(TicTacToeStates.inprogress2);
+                        this.stateChangedCallback(TicTacToeStates.inprogress2, this.arr);
                     }
                     break;
                 default:

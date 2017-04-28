@@ -10,6 +10,7 @@ body {
 
 #blocks .col-xs-4 {
   background-color: yellow;
-  min-width: 2vw;
-  min-height: 2vw;
-  border: 1px solid red; }
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+  font-size: 5em; }
