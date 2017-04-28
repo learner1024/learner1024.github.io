@@ -49,8 +49,6 @@ class TicTacToe{
             throw new Error('makeNextMove was called when state was neither inprogress1 nor inprogress2');
         }
 
-        //prevent opponent winning
-        //if there is a row in match that has opponentchar count 2
         var dec = TicTacToeMatches.map((m) => {
             var myCharCount = 0, myCharIndices = [];
             var oppCharCount = 0, oppCharIndices = [];
@@ -81,24 +79,30 @@ class TicTacToe{
             };
         });
 
+        //finished building decesion object
 
         var loc;
 
-        var oppWinners = dec.filter((d) => {
-            return d.oppCharCount == 2 && d.emptyCharCount == 1;
+        //check if current player has winning move already
+        var myWinners = dec.filter((d) => {
+            return d.myCharCount == 2 && d.emptyCharCount == 1;
         });
-
-        if(oppWinners.length > 0){
-            loc = oppWinners[0].emptyCharIndices[0];
+        if(myWinners.length > 0){
+            //make a winning move
+            loc = myWinners[0].emptyCharIndices[0];
         }
         else{
-            var myWinners = dec.filter((d) => {
-                return d.myCharCount == 2 && d.emptyCharCount == 1;
+            //current player does not have a winning move
+            //so lets check if opponents next move is winning move
+            var oppWinners = dec.filter((d) => {
+                return d.oppCharCount == 2 && d.emptyCharCount == 1;
             });
-            if(myWinners.length > 0){
-                loc = myWinners[0].emptyCharIndices[0];
+            if(oppWinners.length > 0){
+                //if length is more than 1, current player is going to lose any way
+                loc = oppWinners[0].emptyCharIndices[0];
             }
             else{
+                //opponent possible winners / my possible winners
                 var myPossibleWinners = dec.filter((d) => {
                     return d.myCharCount == 1 && d.emptyCharCount > 0
                 });
