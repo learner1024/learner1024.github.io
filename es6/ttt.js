@@ -169,7 +169,20 @@ class TicTacToe{
                 this.state = prevState;
         }
     }
-    update(location, char){
+    update(location){
+        var char, wonState;
+        if(this.state == TicTacToeStates.inprogress1){
+            char = this.player1.char;
+            wonState = TicTacToeStates.won1;
+        }
+        else if(this.state == TicTacToeStates.inprogress2){
+            char = this.player2.char;
+            wonState = TicTacToeStates.won2;
+        }
+        else{
+            throw new Error('update can be called only when state is inprogress1 or inprogress2');
+        }
+        
         if(this.arr[location] === ''){
             this.arr[location] = char;
 
@@ -180,16 +193,7 @@ class TicTacToe{
             var matchNotFound = allMatches.every((am) => {
                 if(this.arr[am[0]] == this.arr[am[1]] && this.arr[am[1]] == this.arr[am[2]]){
                     //match found, current player wins the game
-                    if(this.state == TicTacToeStates.inprogress1){
-                        this.setState(TicTacToeStates.won1);
-                    }
-                    else if (this.state == TicTacToeStates.inprogress2){
-                        this.setState(TicTacToeStates.won2);
-                    }
-                    else{
-                        //real problem here
-                        throw new Error("game won when state was neither inprogress1 nor inprogress2")
-                    }
+                    this.setState(wonState);
                     return false;
                 }
                 else{
@@ -213,11 +217,5 @@ class TicTacToe{
         else{
             throw new Error(`you can not put ${char} at this location`);
         }
-    }
-    update1(location){
-        this.update(location, this.player1.char);
-    }
-    update2(location){
-        this.update(location, this.player2.char);
     }
 }

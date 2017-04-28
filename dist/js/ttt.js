@@ -170,8 +170,19 @@ var TicTacToe = function () {
         }
     }, {
         key: 'update',
-        value: function update(location, char) {
+        value: function update(location) {
             var _this = this;
+
+            var char, wonState;
+            if (this.state == TicTacToeStates.inprogress1) {
+                char = this.player1.char;
+                wonState = TicTacToeStates.won1;
+            } else if (this.state == TicTacToeStates.inprogress2) {
+                char = this.player2.char;
+                wonState = TicTacToeStates.won2;
+            } else {
+                throw new Error('update can be called only when state is inprogress1 or inprogress2');
+            }
 
             if (this.arr[location] === '') {
                 this.arr[location] = char;
@@ -183,14 +194,7 @@ var TicTacToe = function () {
                 var matchNotFound = allMatches.every(function (am) {
                     if (_this.arr[am[0]] == _this.arr[am[1]] && _this.arr[am[1]] == _this.arr[am[2]]) {
                         //match found, current player wins the game
-                        if (_this.state == TicTacToeStates.inprogress1) {
-                            _this.setState(TicTacToeStates.won1);
-                        } else if (_this.state == TicTacToeStates.inprogress2) {
-                            _this.setState(TicTacToeStates.won2);
-                        } else {
-                            //real problem here
-                            throw new Error("game won when state was neither inprogress1 nor inprogress2");
-                        }
+                        _this.setState(wonState);
                         return false;
                     } else {
                         return true;
@@ -209,16 +213,6 @@ var TicTacToe = function () {
             } else {
                 throw new Error('you can not put ' + char + ' at this location');
             }
-        }
-    }, {
-        key: 'update1',
-        value: function update1(location) {
-            this.update(location, this.player1.char);
-        }
-    }, {
-        key: 'update2',
-        value: function update2(location) {
-            this.update(location, this.player2.char);
         }
     }]);
 
