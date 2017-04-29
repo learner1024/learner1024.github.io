@@ -10,9 +10,9 @@ $(document).ready(function () {
 
     var gameOpts = {
         stateChangedCallback: function stateChangedCallback(state, lastPattern) {
+            currentPattern = [];
             switch (state) {
                 case SimonStates.fresh:
-                    currentPattern = [];
                     console.log('fresh game started');
                     break;
                 case SimonStates.retry:

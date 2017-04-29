@@ -1,3 +1,22 @@
+@media all and (orientation: portrait) {
+    #blocks{
+        .col-xs-6{
+            width: 40vw;
+            height: 40vw;
+        }
+    }
+}
+
+@media all and (orientation: landscape) {
+    #blocks{
+        .col-xs-6{
+            width: 40vh;
+            height: 40vh;
+        }
+    }
+}
+
+
 $font-family: 'Ubuntu', sans-serif;
 section{
     min-height: 100vh;
@@ -12,23 +31,25 @@ body {
     align-items: center;   
 }
 
+
 #blocks{
     #block1{
         background-color: green;
+        border-radius: 100% 0% 0% 0%;
     }
     #block2{
         background-color: red;
+        border-radius: 0% 100% 0% 0%;
     }
     #block3{
         background-color: yellow;
+        border-radius: 0% 0% 0% 100%;
     }
     #block4{
         background-color: blue;
+        border-radius: 0% 0% 100% 0%;
     }
     .col-xs-6{
-        width: 100px;
-        height: 100px;
-        border: 1px solid black;
-        border-radius: 50%;
+        border: 0.3em solid black;        
     }
 }
