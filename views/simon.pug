@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title TicTacToe
+        title Simon Game!
 
         meta(charset="UTF-8") 
         meta(name="viewport", content="width=device-width, initial-scale=1")
@@ -21,13 +21,22 @@ html
 
             .container-fluid
                 .panel.panel-default
-                    .panel-heading.text-left
-                        .panel-title
+                    .panel-heading
+                        .panel-title.text-left
                             h1 Simon!
-                        
+                        .btn-group(role="group")
+                            a.btn.btn-default 1
+                            a.btn.btn-default 2
+                            a.btn.btn-default 3                   
                                               
                         
                     .panel-body#blocks
+                        .row
+                            .col-xs-6#block1
+                            .col-xs-6#block2
+                        .row
+                            .col-xs-6#block3
+                            .col-xs-6#block4
                         
                     .panel-footer
                         

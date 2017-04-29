@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TicTacToe</title>
+    <title>Simon Game!</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
@@ -16,12 +16,22 @@
     <section class="vertical-center full-height text-center">
       <div class="container-fluid">
         <div class="panel panel-default">
-          <div class="panel-heading text-left">
-            <div class="panel-title">
+          <div class="panel-heading">
+            <div class="panel-title text-left">
               <h1>Simon!</h1>
             </div>
+            <div class="btn-group" role="group"><a class="btn btn-default">1</a><a class="btn btn-default">2</a><a class="btn btn-default">3                   </a></div>
           </div>
-          <div class="panel-body" id="blocks"></div>
+          <div class="panel-body" id="blocks">
+            <div class="row">
+              <div class="col-xs-6" id="block1"></div>
+              <div class="col-xs-6" id="block2"></div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6" id="block3"></div>
+              <div class="col-xs-6" id="block4"></div>
+            </div>
+          </div>
           <div class="panel-footer"></div>
         </div>
       </div>

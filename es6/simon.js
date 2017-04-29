@@ -3,9 +3,10 @@ var SimonStates = {
     won: 'w',
     lost: 'l',
     nextPatternAdded: 'n',
+    retry: 'r'
 
 }
-var Difficulties = {
+var SimonDifficulties = {
     easy: 1,
     normal: 2,
     hard: 3
@@ -25,16 +26,25 @@ var RandomNumberUtils = {
 }
 class Simon{
     constructor(opts){
-        this.difficulty = opts.difficulty || Difficulties.normal;
+        this.retryEnabled = opts.retryEnabled || true;
+        this.difficulty = opts.difficulty || SimonDifficulties.easy;
         this.stateChangedCallback = opts.stateChangedCallback;
         this.setState(SimonStates.fresh);
     }
 
+    get lastPattern(){
+        return this.patterns[this.patterns.length - 1];
+    }
+
+    get count(){
+        return this.patterns.length;
+    }
+
 
     generateNextPattern(){
-        var nextPattern = [RandomNumberUtils.generateRandomNumberBetweenMinMax(0,3)];
+        var nextPattern = [RandomNumberUtils.GenerateRandomNumberBetweenMinMax(0,3)];
         if(this.patterns.length > 0){
-            nextPattern = this.patterns[this.patterns.length - 1].concat(nextPattern);
+            nextPattern = this.lastPattern.concat(nextPattern);
         }
         this.patterns.push(nextPattern);
         this.setState(SimonStates.nextPatternAdded);
@@ -42,14 +52,19 @@ class Simon{
 
     submitPattern(pattern){
         var ret = false;
-        var lastPattern = this.patterns[this.patterns.length - 1];
-        if(pattern.length == lastPattern.length){
+        if(pattern.length == this.lastPattern.length){
             ret = pattern.every((e, i) => {
-                return lastPattern[i] === e;
+                return this.lastPattern[i] === e;
             })
         }
         if(ret == false){
-            this.setState(SimonStates.lost)
+            if(this.retryEnabled == true){
+                this.setState(SimonStates.retry);
+            }
+            else{
+                this.setState(SimonStates.lost);
+            }
+            
         }
         else{
             if(this.patterns.length == this.difficulty * 10){
@@ -67,6 +82,11 @@ class Simon{
         switch(newState){
             case SimonStates.fresh:
                 this.patterns = [];
+                this.stateChangedCallback(SimonStates.fresh);
+                this.generateNextPattern();
+                break;
+            case SimonStates.retry:
+                this.stateChangedCallback(SimonStates.retry, this.lastPattern);
                 break;
             case SimonStates.won:
                 this.stateChangedCallback(SimonStates.won);
@@ -75,7 +95,7 @@ class Simon{
                 this.stateChangedCallback(SimonStates.lost);
                 break;
             case SimonStates.nextPatternAdded:
-                this.stateChangedCallback(SimonStates.nextPatternAdded);
+                this.stateChangedCallback(SimonStates.nextPatternAdded, this.lastPattern);
                 break;
             default:
                 this.setState(prevState); 
