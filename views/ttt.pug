@@ -25,24 +25,20 @@ html
                         .panel-title
                             h1 Tic Tac Toe!
                         .row
-                            .col-xs-5.text-left
+                            .col-xs-4.text-left
                                 h3 
                                     | X
                                     small#xPlayer  (you)
                                 h3#pointToXplayer
                                     small.fa.fa-arrow-up
-                            .col-xs-2
-                                h3
-                                    small#btnNewGame.fa.fa-play                                    
-                                h3
-                                    small#btnSwitch.fa.fa-exchange
-                            .col-xs-5.text-right
+                            .col-xs-4.text-center
+                                h3#wonLoseDisplay                                     
+                            .col-xs-4.text-right
                                 h3
                                     | O
                                     small#oPlayer  (pc)
                                 h3#pointToOplayer
-                                    small.fa.fa-arrow-up
-                                    
+                                    small.fa.fa-arrow-up                                    
                         
                     .panel-body#blocks
                         .row
@@ -57,6 +53,17 @@ html
                             .col-xs-4#i6
                             .col-xs-4#i7
                             .col-xs-4#i8   
+                    .panel-footer
+                        .row
+                            .col-xs-6
+                                h3#btnNewGame
+                                    i.fa.fa-play
+                                    small  (reset)
+                            .col-xs-6
+                                h3#btnSwitch
+                                    i.fa.fa-exchange
+                                    small  ( X / O )
+                                    
                                                      
         script(type="text/javascript", src="dist/js/ttt.js")
         script(type="text/javascript", src="dist/js/ttt-ui.js")

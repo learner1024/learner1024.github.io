@@ -9,12 +9,28 @@ $(document).ready(function () {
             });
             switch (state) {
                 case TicTacToeStates.fresh:
+                    $("#wonLoseDisplay").text('');
+                    $("#wonLoseDisplay").removeClass("winner loser");
                     console.log('fresh game started');
                     break;
                 case TicTacToeStates.won1:
                     console.log('player1 - won');
+                    if (game.player1.char == gameOpts.userChar) {
+                        $("#wonLoseDisplay").text("You Win!");
+                        $("#wonLoseDisplay").addClass("winner");
+                    } else {
+                        $("#wonLoseDisplay").text("You Lose!");
+                        $("#wonLoseDisplay").addClass("loser");
+                    }
                     break;
                 case TicTacToeStates.won2:
+                    if (game.player2.char == gameOpts.userChar) {
+                        $("#wonLoseDisplay").text("You Win!");
+                        $("#wonLoseDisplay").addClass("winner");
+                    } else {
+                        $("#wonLoseDisplay").text("You Lose!");
+                        $("#wonLoseDisplay").addClass("loser");
+                    }
                     console.log('player2 - won');
                     break;
                 case TicTacToeStates.draw:
