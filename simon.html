@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/simon.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div id="blocksContainer">
@@ -20,7 +22,13 @@
         <div class="block" id="block4"></div>
       </div>
       <div id="controls">
-        <h1>Simon</h1>
+        <h1>Simon
+          <div><span class="label label-default" id="count">0</span></div>
+          <div><span class="label label-default" id="result"></span></div>
+          <div>
+            <div class="btn-group" role="group">                   <a class="btn btn-default" id="btnNew" href="#">New</a><a class="btn btn-default" id="btnStop" href="#">Stop</a><a class="btn btn-default" id="btnStrict" href="#">Strict</a></div>
+          </div>
+        </h1>
       </div>
     </div>
     <script type="text/javascript" src="dist/js/simon.js"></script>

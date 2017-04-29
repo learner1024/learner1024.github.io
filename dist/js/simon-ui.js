@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var rf = function rf(blockId, cb) {
         return function () {
             $(blockId).fadeOut("slow", function () {
@@ -19,23 +20,30 @@ $(document).ready(function () {
     var currentPattern;
 
     var gameOpts = {
-        stateChangedCallback: function stateChangedCallback(state, lastPattern) {
+        stateChangedCallback: function stateChangedCallback(state, lastPattern, count) {
             currentPattern = [];
             switch (state) {
                 case SimonStates.fresh:
+                    $("#btnNew").addClass("disabled");
+                    $("#btnStrict").addClass("disabled");
+                    $("#count").text(0);
                     console.log('fresh game started');
                     break;
                 case SimonStates.retry:
+                    $("#result").text("retry");
                     visualize(lastPattern);
                     console.log('retry');
                     break;
                 case SimonStates.won:
+                    $("#result").text("won");
                     console.log('won');
                     break;
                 case SimonStates.lost:
+                    $("#result").text("lost");
                     console.log('lost');
                     break;
                 case SimonStates.nextPatternAdded:
+                    $("#count").text(count);
                     console.log(lastPattern);
                     visualize(lastPattern);
                     console.log('next pattern added');
@@ -43,12 +51,14 @@ $(document).ready(function () {
             }
         }
     };
-    var game = new Simon(gameOpts);
+    var game;
 
     var updateCurrentPattern = function updateCurrentPattern(n) {
-        currentPattern.push(n);
-        if (currentPattern.length == game.count) {
-            game.submitPattern(currentPattern);
+        if (game) {
+            currentPattern.push(n);
+            if (currentPattern.length == game.count) {
+                game.submitPattern(currentPattern);
+            }
         }
     };
 
@@ -64,4 +74,17 @@ $(document).ready(function () {
     $("#block4").click(function () {
         updateCurrentPattern(3);
     });
+
+    $("#btnNew").click(function () {
+        game = new Simon(gameOpts);
+    });
+    $("#btnStop").click(function () {
+        game = null;
+        $("#btnNew").removeClass("disabled");
+    });
+    $("#btnStrict").click(function () {
+        gameOpts.retryEnabled = !gameOpts.retryEnabled;
+    });
+
+    $("#btnStop").addClass("disabled");
 });

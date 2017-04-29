@@ -95,7 +95,7 @@ class Simon{
                 this.stateChangedCallback(SimonStates.lost);
                 break;
             case SimonStates.nextPatternAdded:
-                this.stateChangedCallback(SimonStates.nextPatternAdded, this.lastPattern);
+                this.stateChangedCallback(SimonStates.nextPatternAdded, this.lastPattern, this.patterns.length);
                 break;
             default:
                 this.setState(prevState); 

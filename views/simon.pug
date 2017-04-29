@@ -9,10 +9,12 @@ html
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
 
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css") 
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
  
         link(rel="stylesheet", href="dist/css/simon.css")
         
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
         #blocksContainer
             .blocks                
@@ -23,6 +25,16 @@ html
                 #block4.block
             #controls
                 h1 Simon
+                    div
+                        span#count.label.label-default 0
+                    div
+                        span#result.label.label-default
+                        
+                    div
+                        .btn-group(role="group")                    
+                            a#btnNew.btn.btn-default(href="#") New
+                            a#btnStop.btn.btn-default(href="#") Stop
+                            a#btnStrict.btn.btn-default(href="#") Strict
 
                             
         script(type="text/javascript", src="dist/js/simon.js")
