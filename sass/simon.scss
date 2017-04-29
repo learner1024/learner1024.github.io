@@ -5,6 +5,12 @@
             height: 40vw;
         }
     }
+    #controls{
+        top:calc(50% - 15vw + 1.8em);
+        left:calc(50% - 15vw);
+        width: 30vw;
+        height: 30vw;
+    }
 }
 
 @media all and (orientation: landscape) {
@@ -13,6 +19,12 @@
             width: 40vh;
             height: 40vh;
         }
+    }
+    #controls{
+        top:calc(50% - 15vh + 1.8em);
+        left:calc(50% - 15vh);
+        width: 30vh;
+        height: 30vh;
     }
 }
 
@@ -52,4 +64,11 @@ body {
     .col-xs-6{
         border: 0.3em solid black;        
     }
+}
+#controls{
+    border: 0.3em solid black;
+    z-index: 1;
+    border-radius: 100%;
+    position: absolute;
+    background-color: white;
 }
