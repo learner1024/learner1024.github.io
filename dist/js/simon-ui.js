@@ -1,8 +1,19 @@
 $(document).ready(function () {
+    var rf = function rf(blockId, cb) {
+        return function () {
+            $(blockId).fadeOut("slow", function () {
+                $(blockId).fadeIn("slow", cb);
+            });
+        };
+    };
+
     var visualize = function visualize(lp) {
-        lp.forEach(function (e, i) {
-            $('#block' + (e + 1)).addClass("animated fadeIn");
-        });
+        var f = function f() {};
+        for (var j = lp.length - 1; j >= 0; j--) {
+            var currentBlockId = "#block" + (lp[j] + 1);
+            f = rf(currentBlockId, f);
+        }
+        f();
     };
 
     var currentPattern;
@@ -26,10 +37,6 @@ $(document).ready(function () {
                     break;
                 case SimonStates.nextPatternAdded:
                     console.log(lastPattern);
-                    $('#block1').removeClass("animated fadeIn");
-                    $('#block2').removeClass("animated fadeIn");
-                    $('#block3').removeClass("animated fadeIn");
-                    $('#block4').removeClass("animated fadeIn");
                     visualize(lastPattern);
                     console.log('next pattern added');
                     break;
