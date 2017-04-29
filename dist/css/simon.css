@@ -373,27 +373,32 @@ body {
   font-family: "Ubuntu", sans-serif; }
 
 @media all and (orientation: landscape) {
+  #blocksContainer {
+    margin: calc((20vh - 12px) / 2) calc((100vw - 12px - 80vh) / 2); }
   #controls {
-    width: calc(40vh - 6px);
-    height: calc(40vh - 6px);
-    top: calc(20vh + 6px);
-    left: calc(20vh + 6px); }
+    width: calc(40vh);
+    height: calc(40vh);
+    top: calc(((20vh - 12px) / 2) + 20vh);
+    left: calc(((100vw - 12px - 80vh) / 2) + 20vh); }
   .block {
     width: calc(40vh);
     height: calc(40vh); } }
 
 @media all and (orientation: portrait) {
+  #blocksContainer {
+    margin: calc((100vh - 80vw - 12px) /2) calc((20vw - 12px) / 2); }
   #controls {
-    width: calc(40vw - 3px);
-    height: calc(40vw - 3px);
-    top: calc(20vw + 6px);
-    left: calc(20vw + 6px); }
+    width: calc(40vw);
+    height: calc(40vw);
+    top: calc(((100vh - 80vw - 12px) /2) + 20vw);
+    left: calc(((20vw - 12px) / 2) + 20vw); }
   .block {
     width: 40vw;
     height: 40vw; } }
 
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: greenyellow; }
 
 #blocksContainer .blocks {
   display: flex; }

@@ -1,8 +1,7 @@
 $(document).ready(function () {
     var visualize = function visualize(lp) {
         lp.forEach(function (e, i) {
-            $("#block" + (e + 1)).text("wundaba");
-            $("#block" + (e + 1)).text("wundaba");
+            $('#block' + (e + 1)).addClass("animated fadeIn");
         });
     };
 
@@ -26,6 +25,11 @@ $(document).ready(function () {
                     console.log('lost');
                     break;
                 case SimonStates.nextPatternAdded:
+                    console.log(lastPattern);
+                    $('#block1').removeClass("animated fadeIn");
+                    $('#block2').removeClass("animated fadeIn");
+                    $('#block3').removeClass("animated fadeIn");
+                    $('#block4').removeClass("animated fadeIn");
                     visualize(lastPattern);
                     console.log('next pattern added');
                     break;
