@@ -27,6 +27,8 @@ class TicTacToe{
             isComputer: opts.userChar && opts.userChar == 'X'
         }
 
+        this.undefeatable = opts.undefeatable;
+
         this.stateChangedCallback = opts.stateChangedCallback;
 
         this.setState(TicTacToeStates.fresh);
@@ -114,7 +116,26 @@ class TicTacToe{
                         return d.oppCharCount == 1 && d.emptyCharCount > 0
                     });
                     if(oppPossibleWinners.length > 0){
-                        loc = oppPossibleWinners[0].emptyCharIndices[0];
+                        if(this.undefeatable){
+                            var priority = [4,0,2,6,8];
+                            oppPossibleWinners.every(function(opw){
+                                for (var pi = 0; pi < priority.length; pi++){
+                                    var proposedPosition = priority[pi];
+                                    var indexOfProposedPositionInEmptyCharIndices = opw.emptyCharIndices.indexOf(proposedPosition);
+                                    if(indexOfProposedPositionInEmptyCharIndices != -1){
+                                        loc = proposedPosition;
+                                        return false;
+                                    }
+                                }
+                                return true;
+                            });
+                        }
+                        else{
+                            loc = oppPossibleWinners[0].emptyCharIndices[0];
+                        }
+                        
+                        
+                        
                     }
                     else{
                         //this is first turn, all empty, do it anywhere

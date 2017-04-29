@@ -3,6 +3,7 @@ $(document).ready(function () {
     var game;
     var gameOpts = {
         userChar: 'X',
+        undefeatable: true,
         stateChangedCallback: function stateChangedCallback(state, arr) {
             arr.forEach(function (e, i) {
                 $('#i' + i).text(e);
@@ -10,7 +11,7 @@ $(document).ready(function () {
             switch (state) {
                 case TicTacToeStates.fresh:
                     $("#wonLoseDisplay").text('');
-                    $("#wonLoseDisplay").removeClass("winner loser");
+                    $("#wonLoseDisplay").removeClass("winner loser draw");
                     console.log('fresh game started');
                     break;
                 case TicTacToeStates.won1:
@@ -34,6 +35,8 @@ $(document).ready(function () {
                     console.log('player2 - won');
                     break;
                 case TicTacToeStates.draw:
+                    $("#wonLoseDisplay").text('draw!');
+                    $("#wonLoseDisplay").addClass("draw");
                     console.log('there was draw');
                     break;
                 case TicTacToeStates.inprogress1:
