@@ -6,20 +6,36 @@ html
         meta(charset="UTF-8") 
         meta(name="viewport", content="width=device-width, initial-scale=1")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
+
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
         
         link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
+        
+
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
+
         link(rel="stylesheet", href="dist/css/portfolio.css")
         
     body
-        ul.navig
-            li 
-                a(href="#intro") intro
-            li 
-                a(href="#techs") techs
-            li 
-                a(href="#showcase") showcase
-            li 
-                a(href="#contact") contact
+        nav.navbar.navbar-default.navbar-fixed-top
+            .container-fluid
+                .navbar-header
+                    button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#cn", aria-expanded="false")
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a(href="#intro").navbar-brand SK
+                #cn.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href="#techs") Tech
+                        li 
+                            a(href="#showcase") Showcase
+                        li 
+                            a(href="#contact") Contact
         section#intro
             h1 H1            
         section#techs
@@ -28,8 +44,6 @@ html
             h3 H3
         section#contact
             h4 H4
-            
-
         script(type="text/javascript", src="dist/js/portfolio.js")
         
         
