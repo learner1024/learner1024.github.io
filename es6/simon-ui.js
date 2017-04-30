@@ -66,6 +66,7 @@ $(document).ready(function(){
                     console.log('fresh game started');
                     break;
                 case SimonStates.retry:     
+                    $("#result").removeClass("hide");
                     $("#result").text("retry");
                     visualize(lastPattern);
                     console.log('retry');
@@ -95,6 +96,7 @@ $(document).ready(function(){
     
     var updateCurrentPattern = function(n){
         if(game != null && animationInProgress == false){
+            $("#result").addClass("hide");
             audios[n].play();
             currentPattern.push(n);
             if(currentPattern.length == game.count){
