@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    $("#toggleStrict").bootstrapToggle({
+        on: 'Strict',
+        off: 'Easy'
+    });
+
+    var animationInProgress = false;
+
     var rf = function rf(blockId, cb) {
         return function () {
             $(blockId).fadeOut("slow", function () {
@@ -9,9 +16,12 @@ $(document).ready(function () {
     };
 
     var visualize = function visualize(lp) {
-        var f = function f() {};
+        animationInProgress = true;
+        var f = function f() {
+            animationInProgress = false;
+        };
         for (var j = lp.length - 1; j >= 0; j--) {
-            var currentBlockId = "#block" + (lp[j] + 1);
+            var currentBlockId = '#block' + (lp[j] + 1);
             f = rf(currentBlockId, f);
         }
         f();
@@ -20,13 +30,18 @@ $(document).ready(function () {
     var currentPattern;
 
     var gameOpts = {
+        retryEnabled: true,
         stateChangedCallback: function stateChangedCallback(state, lastPattern, count) {
             currentPattern = [];
             switch (state) {
                 case SimonStates.fresh:
-                    $("#btnNew").addClass("disabled");
-                    $("#btnStrict").addClass("disabled");
                     $("#count").text(0);
+                    $("#count").removeClass("hide");
+                    $("#result").addClass("hide");
+                    $("#btnStop").removeClass("hide");
+                    $("#btnNew").addClass("hide");
+                    $(".toggle").addClass("hide");
+
                     console.log('fresh game started');
                     break;
                 case SimonStates.retry:
@@ -35,10 +50,14 @@ $(document).ready(function () {
                     console.log('retry');
                     break;
                 case SimonStates.won:
+                    $("#count").addClass("hide");
+                    $("#result").removeClass("hide");
                     $("#result").text("won");
                     console.log('won');
                     break;
                 case SimonStates.lost:
+                    $("#count").addClass("hide");
+                    $("#result").removeClass("hide");
                     $("#result").text("lost");
                     console.log('lost');
                     break;
@@ -54,7 +73,8 @@ $(document).ready(function () {
     var game;
 
     var updateCurrentPattern = function updateCurrentPattern(n) {
-        if (game) {
+        if (game != null && animationInProgress == false) {
+            console.log(n);
             currentPattern.push(n);
             if (currentPattern.length == game.count) {
                 game.submitPattern(currentPattern);
@@ -80,11 +100,15 @@ $(document).ready(function () {
     });
     $("#btnStop").click(function () {
         game = null;
-        $("#btnNew").removeClass("disabled");
-    });
-    $("#btnStrict").click(function () {
-        gameOpts.retryEnabled = !gameOpts.retryEnabled;
+        $("#btnNew").removeClass("hide");
+        $(".toggle").removeClass("hide");
+        $("#btnStop").addClass("hide");
+        $("#count").text(0);
+        $("#count").addClass("hide");
+        $("#result").text("");
     });
 
-    $("#btnStop").addClass("disabled");
+    $('#toggleStrict').change(function () {
+        gameOpts.retryEnabled = !$(this).prop('checked');
+    });
 });

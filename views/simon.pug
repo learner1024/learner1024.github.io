@@ -10,11 +10,15 @@ html
 
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css") 
         link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css")
  
         link(rel="stylesheet", href="dist/css/simon.css")
         
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
         script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+        script(type="text/javascript", src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js")
+        
     body
         #blocksContainer
             .blocks                
@@ -25,16 +29,18 @@ html
                 #block4.block
             #controls
                 h1 Simon
-                    div
-                        span#count.label.label-default 0
-                    div
-                        span#result.label.label-default
-                        
-                    div
-                        .btn-group(role="group")                    
-                            a#btnNew.btn.btn-default(href="#") New
-                            a#btnStop.btn.btn-default(href="#") Stop
-                            a#btnStrict.btn.btn-default(href="#") Strict
+                h2
+                    span#count.label.label-default.hide 0
+                h2
+                    span#result.label.label-default.hide
+            div.text-center
+                .btn-group(role="group")                    
+                    a#btnNew.btn.btn-default(href="#")
+                        i.fa.fa-play
+                    a#btnStop.btn.btn-default.hide(href="#")
+                        i.fa.fa-stop
+                    input#toggleStrict(type="checkbox")
+
 
                             
         script(type="text/javascript", src="dist/js/simon.js")

@@ -26,7 +26,7 @@ var RandomNumberUtils = {
 }
 class Simon{
     constructor(opts){
-        this.retryEnabled = opts.retryEnabled || true;
+        this.retryEnabled = opts.retryEnabled;
         this.difficulty = opts.difficulty || SimonDifficulties.easy;
         this.stateChangedCallback = opts.stateChangedCallback;
         this.setState(SimonStates.fresh);

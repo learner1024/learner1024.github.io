@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
     <link rel="stylesheet" href="dist/css/simon.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </head>
   <body>
     <div id="blocksContainer">
@@ -22,13 +25,14 @@
         <div class="block" id="block4"></div>
       </div>
       <div id="controls">
-        <h1>Simon
-          <div><span class="label label-default" id="count">0</span></div>
-          <div><span class="label label-default" id="result"></span></div>
-          <div>
-            <div class="btn-group" role="group">                   <a class="btn btn-default" id="btnNew" href="#">New</a><a class="btn btn-default" id="btnStop" href="#">Stop</a><a class="btn btn-default" id="btnStrict" href="#">Strict</a></div>
-          </div>
-        </h1>
+        <h1>Simon</h1>
+        <h2><span class="label label-default hide" id="count">0</span></h2>
+        <h2><span class="label label-default hide" id="result"></span></h2>
+      </div>
+      <div class="text-center">
+        <div class="btn-group" role="group">                   <a class="btn btn-default" id="btnNew" href="#"><i class="fa fa-play"></i></a><a class="btn btn-default hide" id="btnStop" href="#"><i class="fa fa-stop"></i></a>
+          <input id="toggleStrict" type="checkbox">
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="dist/js/simon.js"></script>
