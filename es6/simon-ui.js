@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-    var audio1 = new Audio('audio/simonSound4.mp3'); 
-       
+    var audio1 = new Audio('audio/simonSound4.mp3');
     var audio2 = new Audio('audio/simonSound3.mp3');
     var audio3 = new Audio('audio/simonSound2.mp3');
     var audio4 = new Audio('audio/simonSound1.mp3');
@@ -31,19 +30,22 @@ $(document).ready(function(){
     
 
     var visualize = function(lp){
-        animationInProgress = true;
-        var f = function(){
-            animationInProgress = false;
-            audios[0].onended = null;
-            audios[1].onended = null;
-            audios[2].onended = null;
-            audios[3].onended = null;
-        };
-        for(var j = lp.length - 1; j >= 0; j--){
-            var currentBlockId = `#block${lp[j] + 1}`;
-            f = rf(currentBlockId, f, lp[j]);
-        }
-        f();
+        setTimeout(function(){
+            animationInProgress = true;
+            var f = function(){
+                animationInProgress = false;
+                audios[0].onended = null;
+                audios[1].onended = null;
+                audios[2].onended = null;
+                audios[3].onended = null;
+            };
+            for(var j = lp.length - 1; j >= 0; j--){
+                var currentBlockId = `#block${lp[j] + 1}`;
+                f = rf(currentBlockId, f, lp[j]);
+            }
+            f();
+        }, 1000);
+        
     }
 
     var currentPattern;
