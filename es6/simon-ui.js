@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+    var audio1 = new Audio('audio/simonSound4.mp3'); 
+       
+    var audio2 = new Audio('audio/simonSound3.mp3');
+    var audio3 = new Audio('audio/simonSound2.mp3');
+    var audio4 = new Audio('audio/simonSound1.mp3');
+    var audios = [audio1, audio2, audio3, audio4];
+
     $("#toggleStrict").bootstrapToggle({
       on: 'Strict',
       off: 'Easy'
@@ -9,11 +16,16 @@ $(document).ready(function(){
 
     var animationInProgress = false;
     
-    var rf = function(blockId, cb){
+    var rf = function(blockId, cb, blockIndex){
         return function(){
-            $(blockId).fadeOut("slow", function(){
-                $(blockId).fadeIn("slow", cb);
-            });
+            
+            audios[blockIndex].onended = function(){
+                $(blockId).fadeOut("fast", function(){                    
+                    $(blockId).fadeIn("fast", cb);
+                });
+            };
+            audios[blockIndex].play();
+            
         }
     }
     
@@ -22,10 +34,14 @@ $(document).ready(function(){
         animationInProgress = true;
         var f = function(){
             animationInProgress = false;
+            audios[0].onended = null;
+            audios[1].onended = null;
+            audios[2].onended = null;
+            audios[3].onended = null;
         };
         for(var j = lp.length - 1; j >= 0; j--){
             var currentBlockId = `#block${lp[j] + 1}`;
-            f = rf(currentBlockId, f);
+            f = rf(currentBlockId, f, lp[j]);
         }
         f();
     }
@@ -77,15 +93,13 @@ $(document).ready(function(){
     
     var updateCurrentPattern = function(n){
         if(game != null && animationInProgress == false){
-            console.log(n);
+            audios[n].play();
             currentPattern.push(n);
             if(currentPattern.length == game.count){
                 game.submitPattern(currentPattern);
             }
         }        
     }
-
-
 
     $("#block1").click(function(){
         updateCurrentPattern(0);
