@@ -27,7 +27,7 @@ body{
 
     #intro{
         img{
-            border-radius: 0 50%;
+            border-radius: 30%;
         }
         position: absolute;
         top: 50%;
@@ -50,7 +50,7 @@ body{
     #showcase{
         .card{
             margin-top: 5vh;
-            background-image:linear-gradient(to top, white 0%, #4286f4 100%);
+            background-image:linear-gradient(to top, white 0%, #95bcf9 100%);
             width: 20rem;
         }
 
