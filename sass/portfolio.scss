@@ -1,20 +1,10 @@
 @import "parts/fonts";
-@import "parts/viewport-fix-ie10";
-@media all and (orientation:landscape) {
-    
-}
-@media all and (orientation:portrait) {
-    
+
+.full-height{
+    height: 80vh;
 }
 
-body{
-    background-image: linear-gradient(white 0%, #4286f4 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
-    section{
-        min-height: 100vh;        
-    }
-    
-    
+.vertical-center{
+    display: flex;
+    align-items: center;
 }

@@ -1,49 +1,41 @@
 doctype html
-html
+html(lang="en")
     head
         title Sandeep Khandewale's portfolio
 
         meta(charset="UTF-8") 
-        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
 
-        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
-        
-        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
-        
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")        
 
-        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
-
-        link(rel="stylesheet", href="dist/css/portfolio.css")
-        
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css")
+        link(rel="stylesheet", href="dist/css/portfolio.css")  
     body
-        nav.navbar.navbar-default.navbar-fixed-top
-            .container-fluid
-                .navbar-header
-                    button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#cn", aria-expanded="false")
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a(href="#intro").navbar-brand SK
-                #cn.collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        li
-                            a(href="#techs") Tech
-                        li 
-                            a(href="#showcase") Showcase
-                        li 
-                            a(href="#contact") Contact
-        section#intro
-            h1 H1            
-        section#techs
-            h2 H2
-        section#showcase
-            h3 H3
-        section#contact
-            h4 H4
+        .container
+            nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+                button.navbar-toggler.navbar-toggler-right(type="button", data-toggle="collapse", data-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                a.navbar-brand(href="#") SK
+                #navbarSupportedContent.collapse.navbar-collapse
+                    .navbar-nav
+                        a.nav-item.nav-link(href="#") Intro
+                        a.nav-item.nav-link(href="#") Tech                        
+                        a.nav-item.nav-link(href="#") Showcase
+                        
+
+        .container
+            #intro.full-height.vertical-center.text-center
+                img(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/000/202/1b9/2c1dc5a.jpg")
+                .h1.display-3 Sandeep Khandewale
+
+        .container
+        .container
+        .container
+
+        script(type="text/javascript", src="https://code.jquery.com/jquery-3.1.1.slim.min.js")
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js")
         script(type="text/javascript", src="dist/js/portfolio.js")
         
         

@@ -1,33 +1,9 @@
 body {
   font-family: "Ubuntu", sans-serif; }
 
-/*!
- * IE10 viewport hack for Surface/desktop Windows 8 bug
- * Copyright 2014-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-/*
- * See the Getting Started docs for more information:
- * http://getbootstrap.com/getting-started/#support-ie10-width
- */
-@-webkit-viewport {
-  width: device-width; }
+.full-height {
+  height: 80vh; }
 
-@-moz-viewport {
-  width: device-width; }
-
-@-ms-viewport {
-  width: device-width; }
-
-@-o-viewport {
-  width: device-width; }
-
-@viewport {
-  width: device-width; }
-
-body {
-  background-image: linear-gradient(white 0%, #4286f4 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed; }
-  body section {
-    min-height: 100vh; }
+.vertical-center {
+  display: flex;
+  align-items: center; }
