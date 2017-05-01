@@ -12,26 +12,122 @@ html(lang="en")
         link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css")
         link(rel="stylesheet", href="dist/css/portfolio.css")  
     body
-        .container
+        .container-fluid
             nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
                 button.navbar-toggler.navbar-toggler-right(type="button", data-toggle="collapse", data-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
                     span.navbar-toggler-icon
                 a.navbar-brand(href="#") SK
                 #navbarSupportedContent.collapse.navbar-collapse
-                    .navbar-nav
-                        a.nav-item.nav-link(href="#") Intro
-                        a.nav-item.nav-link(href="#") Tech                        
-                        a.nav-item.nav-link(href="#") Showcase
+                    .navbar-nav                        
+                        a.nav-item.nav-link(href="#tech") Tech                        
+                        a.nav-item.nav-link(href="#showcase") Showcase
                         
-
-        .container
-            #intro.full-height.vertical-center.text-center
+        .herocontainer.full-height.text-center
+            #intro
                 img(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/000/202/1b9/2c1dc5a.jpg")
-                .h1.display-3 Sandeep Khandewale
+                br
+                br
+                h1 Sandeep Khandewale
+                h4 Full Stack Developer (JavaScript)
+            
 
-        .container
-        .container
-        .container
+        .container.full-height
+            #tech.carousel.slide(data-ride="carousel")
+                .carousel-inner(role="listbox").text-center
+                    .carousel-item.active.skills
+                        .container
+                            h1 Front-end skills
+                            h6 HTML, JavaScript, ES6, CSS
+                            h6 PolymerJS, AngularJS, Angular, ReactJS, Redux, D3JS
+                            h6 Pug, Babel, Sass
+                    .carousel-item.skills
+                        .container
+                            h1 Back-end and DB skills
+                            h6 NodeJS, ExpressJS
+                            h6 Microservices, RESTful API
+                            h6 PassportJS, SequelizeJS, Bookshelf, 
+                            h6 PostGreSQL, MongoDB
+                    .carousel-item.skills
+                        .container
+                            h1 Other skills
+                            h6 Ionic, React Native
+                            h6 RxJS
+                            h6 git, npm, bower 
+                            h6 Mocha, Chai, , Istanbul, Gulp
+                a.carousel-control-prev(href="#tech", role="button", data-slide="prev")
+                    span.carousel-control-prev-icon
+                a.carousel-control-next(href="#tech", role="button", data-slide="next")
+                    span.carousel-control-next-icon
+        .container.full-height
+            #showcase
+                .row
+
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
+                    .col
+                        .card
+                            .card-block
+                                h4.card-title card title
+                                h6.card-subtitle.mb2.text-muted card subtitle
+                                p.card-text some card text
+                                a.card-link(href="/pomodoro-click.html", target="_blank")
 
         script(type="text/javascript", src="https://code.jquery.com/jquery-3.1.1.slim.min.js")
         script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js")
