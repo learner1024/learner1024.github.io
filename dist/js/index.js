@@ -1,21 +1,4 @@
 $(document).ready(function () {
-    // $("nav ul.nav a").click(function () {
-    //     // $("section").removeClass("animated fadeIn");
-
-    //     // var target = $(this).attr("href");
-    //     // $(target).addClass("animated fadeIn");
-    // });
-
-    // "My Portfolio", 
-    //     "Tribute to Kishori Amonkar", 
-    //     "Random Quote Machine",
-    //     "Local Weather",
-    //     "wikipedia Viewer",
-    //     "TwitchTV JSON API",
-    //     "Calculator",
-    //     "Pomodoro Clock",
-    //     "Tic Tac Toe Game",
-    //     "Simon Game"
 
     var showcaseItems = [{
         title: "My Portfolio (old)",
