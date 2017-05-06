@@ -21,7 +21,7 @@ $(document).ready(function(){
         {
             title: "My Portfolio (old)",
             //subtitle: "FreeCodeCamp Basic level front end project",
-            hyperlink: "/index.html"
+            hyperlink: "/portfolio-old.html"
         },
         {
             title: "Tribute to Kishori Amonkar",
