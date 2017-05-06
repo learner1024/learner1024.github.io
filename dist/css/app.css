@@ -1,17 +1,39 @@
-section {
-  min-height: 100vh; }
-  section h2 {
-    margin-top: 7vh; }
-
 body {
   font-family: "Ubuntu", sans-serif; }
 
-.vertical-center {
-  display: flex;
-  align-items: center; }
+@media all and (orientation: landscape) {
+  #intro {
+    margin-top: 5vh; }
+    #intro img {
+      width: 20vw; } }
 
-#myPic {
-  border-radius: 5% 50%; }
+@media all and (orientation: portrait) {
+  #intro {
+    margin-top: 5vh; }
+    #intro img {
+      width: 40vh; } }
 
-.social a {
-  margin: 1vw; }
+body {
+  background-image: linear-gradient(to bottom, white 0%, #4286f4 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+  body .herocontainer {
+    position: relative; }
+  body #intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    body #intro img {
+      border-radius: 30%; }
+  body #tech {
+    margin-top: 5vh;
+    height: 90vh;
+    display: flex;
+    align-items: center; }
+  body .full-height {
+    min-height: 95vh; }
+  body #showcase .card {
+    margin-top: 5vh;
+    background-image: linear-gradient(to top, white 0%, #95bcf9 100%);
+    width: 20rem; }

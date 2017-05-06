@@ -1,99 +1,78 @@
 doctype html
-html
+html(lang="en")
     head
         title Sandeep Khandewale's portfolio
 
         meta(charset="UTF-8") 
-        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
 
-        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")
-        
-        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Ubuntu")        
+
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css")
+        link(rel="stylesheet", href="dist/css/app.css")  
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
-        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")        
-        link(rel="stylesheet", href="dist/css/app.css")
-        
-        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     body
-        nav.navbar.navbar-fixed-top
-            .container-fluid
-                ul.nav.navbar-nav.nav-pills
-                    li
-                        a#lnkIntro(href="#intro") Intro                
-                    li
-                        a#lnkTechs(href="#techs") Techs
-                    li
-                        a#lnkShowcase(href="#showcase") Showcase
-
-        section#intro.text-center.vertical-center.full-height
-            .container-fluid
-                .row
-                    .col-xs-12
-                        img.img-responsive#myPic(src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/000/202/1b9/2c1dc5a.jpg")
-                .row
-                    .col-xs-12
-                        h1 Sandeep Khandewale 
-                        h3 Full-stack Developer (JavaScript)
-                .row
-                    .col-xs-12.social
-                        a(target="_blank",href="https://www.linkedin.com/in/sandeepkhandewale/") 
-                            i(class="fa fa-5x fa-linkedin-square")
-                        a(target="_blank",href="https://www.facebook.com/skhandewale") 
-                            i(class="fa fa-5x fa-facebook-square")
-                        a(target="_blank",href="https://www.github.com/learner1024") 
-                            i(class="fa fa-5x fa-github-square")
-        
-        section#techs
-            .container-fluid
-                .row
-                    .col-xs-12
-                        h2.text-center Techs
-
-                .panel.panel-default
-                    .panel-heading
-                        h3 Recent Skills 
-                            small as Full-stack Developer
-                    .panel-body
-                        ul
-                            li
-                                h5 JavaScript / ES6
-                            li 
-                                h5 AngularJS, PolymerJS, JQuery
-                            li
-                                h5 NodeJS, ExpressJS
-                            li
-                                h5 PostGreSQL, MongoDB, CouchDB
-                            li
-                                h5 Hybrid Mobile Apps - Ionic
-                    .panel-heading
-                        h3 Past skills 
-                            small as Web Developer .Net Stack
-                    .panel-body
-                        ul
-                            li
-                                h5 C#
-                            li 
-                                h5 ADO.Net, Entity Framework
-                            li 
-                                h5 ASP.Net Web Forms, ASP.Net MVC, ASP.Net Web API
-                            li
-                                h5 Umbraco
-                            li 
-                                h5 Silverlight
-                            li 
-                                h5 MSSQL server
-                                
-        
-        section#showcase
-            .container-fluid
-                .row
-                    .col-xs-12
-                        h2.text-center Showcase
-                        #showcaseItems.row
-                            
-                                
+        .container-fluid
+            nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+                button.navbar-toggler.navbar-toggler-right(type="button", data-toggle="collapse", data-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
+                    span.navbar-toggler-icon
+                a.navbar-brand(href="#") SK
+                #navbarSupportedContent.collapse.navbar-collapse
+                    .navbar-nav                        
+                        a.nav-item.nav-link(href="#tech") Tech                        
+                        a.nav-item.nav-link(href="#showcase") Showcase
+                        
+        .herocontainer.full-height.text-center
+            #intro
+                img(src="/img/me.jpg")
+                h1 Sandeep Khandewale
+                h4 Full Stack Developer (JavaScript)
+                .social
+                    a(target="_blank",href="https://www.linkedin.com/in/sandeepkhandewale/") 
+                        i(class="fa fa-5x fa-linkedin-square")
+                    a(target="_blank",href="https://www.facebook.com/skhandewale") 
+                        i(class="fa fa-5x fa-facebook-square")
+                    a(target="_blank",href="https://www.github.com/learner1024") 
+                        i(class="fa fa-5x fa-github-square")
             
+                            
+            
+
+        .container.full-height
+            #tech.carousel.slide(data-ride="carousel")
+                .carousel-inner(role="listbox").text-center
+                    .carousel-item.active.skills
+                        .container
+                            h1.display-3 Front-end skills
+                            h5 HTML, JavaScript, ES6, CSS
+                            h5 PolymerJS, AngularJS, Angular, ReactJS, Redux, D3JS
+                            h5 Pug, Babel, Sass
+                    .carousel-item.skills
+                        .container
+                            h1.display-3 Back-end and DB skills
+                            h5 NodeJS, ExpressJS
+                            h5 Microservices, RESTful API
+                            h5 PassportJS, SequelizeJS, Bookshelf, 
+                            h5 PostGreSQL, MongoDB
+                    .carousel-item.skills
+                        .container
+                            h1.display-3 Other skills
+                            h5 Ionic, React Native
+                            h5 RxJS
+                            h5 git, npm, bower 
+                            h5 Mocha, Chai, Istanbul, Gulp
+                a.carousel-control-prev(href="#tech", role="button", data-slide="prev")
+                    span.carousel-control-prev-icon
+                a.carousel-control-next(href="#tech", role="button", data-slide="next")
+                    span.carousel-control-next-icon
+        .container.full-height
+            #showcase
+                .row
+
+        script(type="text/javascript", src="https://code.jquery.com/jquery-3.1.1.slim.min.js")
+        script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js")
+        script(type="text/javascript", src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js")
         script(type="text/javascript", src="dist/js/index.js")
         
         
